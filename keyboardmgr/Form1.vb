@@ -1,0 +1,229 @@
+﻿Imports Microsoft.Win32
+Imports System.Runtime.InteropServices
+
+Public Class Form1
+    '定义
+    Public ThemeColor As Boolean
+    Public color As Color
+    Dim hooks As Boolean
+    Dim state As String
+    Dim i As Integer
+    Declare Sub mouse_event Lib "user32" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
+    Public Const MOUSEEVENTF_LEFTDOWN = &H2 '模拟鼠标左键按下
+    Public Const MOUSEEVENTF_LEFTUP = &H4 '模拟鼠标左键释放
+    Public Const MOUSEEVENTF_RIGHTDOWN = &H8 '模拟鼠标右键按下
+    Public Const MOUSEEVENTF_RIGHTUP = &H10 '模拟鼠标右键释放
+    Private Declare Function GetCursorPos Lib "user32" (ByRef lpPoint As POINTAPI) As Long '全屏坐标声明
+    Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
+    Dim P As POINTAPI
+
+    Private Structure POINTAPI '声明坐标变量
+        Public x As Integer '声明坐标变量为32位
+        Public y As Integer '声明坐标变量为32位
+    End Structure
+    '自动更改主题色，深浅色
+    Function ConvertSystemColor(HexColor As String) As Color
+        Return Color.FromArgb(Convert.ToInt32(HexColor.Substring(0, 2), 16), Convert.ToInt32(HexColor.Substring(2, 2), 16), Convert.ToInt32(HexColor.Substring(4, 2), 16), Convert.ToInt32(HexColor.Substring(6, 2), 16))
+    End Function
+    Function GetSystemColor() As Color
+        Dim key As RegistryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\DWM")
+        If key IsNot Nothing Then
+            Dim value As Integer = key.GetValue("ColorizationColor")
+            Dim HexColor = Convert.ToString(value, 16)
+            key.Close()
+            Return ConvertSystemColor(HexColor)
+        End If
+
+    End Function
+    Private Sub GetThemeColor()
+        Dim key As RegistryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize")
+
+        If key IsNot Nothing Then
+            Dim appsUseLightTheme As Integer = key.GetValue("AppsUseLightTheme", -1)
+
+            If appsUseLightTheme = 0 Then   '系统为深色模式
+                darkmode()
+            ElseIf appsUseLightTheme = 1 Then  '系统为浅色模式
+                lightmode()
+            Else
+
+            End If
+
+            key.Close()
+        End If
+
+    End Sub
+    Sub ChangeTheme(sender As Object, e As UserPreferenceChangedEventArgs)
+        If e.Category = UserPreferenceCategory.General Then
+            If Settings1.Default.doAutochange = True Then   '还要检测一遍是否跟随系统
+                GetThemeColor()
+                DwmSetWindowAttribute(Handle, DwmWindowAttribute.UseImmersiveDarkMode, ThemeColor, Marshal.SizeOf(Of Integer))
+                color = GetSystemColor()
+                LinkLabel1.LinkColor = color
+                LinkLabel2.LinkColor = color
+            End If
+        End If
+    End Sub
+    Sub darkmode()
+        Panel1.BackColor = Color.DarkCyan
+        For Each TabPages In TabControl1.TabPages
+            TabPages.backcolor = Color.LightSeaGreen
+        Next
+        BackColor = Color.LightSeaGreen
+        TextBox1.BackColor = Color.MediumTurquoise
+        Button1.BackColor = Color.MediumTurquoise
+    End Sub
+    Sub lightmode()
+        Panel1.BackColor = Color.DeepSkyBlue
+        For Each TabPages In TabControl1.TabPages
+            TabPages.backcolor = Color.LightCyan
+        Next
+        BackColor = Color.LightCyan
+        TextBox1.BackColor = Color.PaleTurquoise
+        Button1.BackColor = Color.PaleTurquoise
+    End Sub
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        NumericUpDown1.Value = Settings1.Default.clicktime
+        'todo:检测是否设置了“跟随系统”以及设置radiobutton状态、深浅色模式
+        Select Case
+           Case
+        End Select
+        AddHandler SystemEvents.UserPreferenceChanged, AddressOf ChangeTheme
+        GetThemeColor()
+    End Sub
+
+    '标题栏
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Application.Exit()
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        WindowState = FormWindowState.Minimized
+    End Sub
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        If TopMost = False Then
+            TopMost = True
+            Label3.Text = "|解除"
+        Else
+            TopMost = False
+            Label3.Text = "|置顶"
+
+        End If
+
+    End Sub
+    '窗体移动
+    Declare Auto Function ReleaseCapture Lib "user32.dll" Alias "ReleaseCapture" () As Boolean
+    'API ReleaseCapture函数是用来释放鼠标捕获的
+    Declare Auto Function SendMessage Lib "user32.dll" Alias "SendMessage" (ByVal hWnd As IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As IntPtr
+    '向windows发送消息
+    Public Const WM_SYSCOMMAND As Integer = &H112&
+    Public Const SC_MOVE As Integer = &HF010&
+    Public Const HTCAPTION As Integer = &H2&
+
+    Private Sub Form1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove
+        If e.Button = MouseButtons.Left Then
+            ReleaseCapture()
+            SendMessage(Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0)
+        End If
+
+
+    End Sub
+    '网站
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start("https://481652.github.io/")
+    End Sub
+    'todo:github页面
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+
+    End Sub
+    '鼠标连点
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        If NumericUpDown1.Value >= 1 Then
+            If NumericUpDown1.Value <= 1000 Then
+            End If
+        Else
+            ToolTip1.SetToolTip(NumericUpDown1, "值必须在1至1000之间。")
+
+        End If
+        If RadioButton1.Checked = True Then
+            Timer1.Enabled = True
+            Timer1.Interval = NumericUpDown1.Value
+        Else
+            Timer2.Enabled = True
+            Timer2.Interval = NumericUpDown1.Value
+        End If
+        RadioButton1.Enabled = False
+        RadioButton2.Enabled = False
+        Button1.Enabled = False
+        NumericUpDown1.Enabled = False
+        Settings1.Default.clicktime = NumericUpDown1.Value
+        Settings1.Default.Save()
+        Form2.Show()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        '左键连点
+        Dim P As POINTAPI
+        GetCursorPos(P)
+        mouse_event(MOUSEEVENTF_LEFTDOWN, P.x.ToString, P.y.ToString, 0, 0)
+        mouse_event(MOUSEEVENTF_LEFTUP, P.x.ToString, P.y.ToString, 0, 0)
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        '右键连点
+        Dim P As POINTAPI
+        GetCursorPos(P)
+        mouse_event(MOUSEEVENTF_RIGHTDOWN, P.x.ToString, P.y.ToString, 0, 0)
+        mouse_event(MOUSEEVENTF_RIGHTUP, P.x.ToString, P.y.ToString, 0, 0)
+    End Sub
+
+    Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
+        Settings1.Default.doAutochange = True
+        Settings1.Default.Save()
+    End Sub
+    <DllImport("dwmapi.dll", PreserveSig:=True)>
+    Public Shared Function DwmSetWindowAttribute(ByVal hwnd As IntPtr, ByVal attr As DwmWindowAttribute, ByRef attrValue As Integer, ByVal attrSize As Integer) As Integer
+
+    End Function
+    Public Enum DwmWindowAttribute
+        NCRenderingEnabled = 1
+        NCRenderingPolicy
+        TransitionsForceDisabled
+        AllowNCPaint
+        CaptionButtonBounds
+        NonClientRtlLayout
+        ForceIconicRepresentation
+        Flip3DPolicy
+        ExtendedFrameBounds
+        HasIconicBitmap
+        DisallowPeek
+        ExcludedFromPeek
+        Cloak
+        Cloaked
+        FreezeRepresentation
+        PassiveUpdateMode
+        UseHostBackdropBrush
+        UseImmersiveDarkMode = 20
+        WindowCornerPreference = 33
+        BorderColor
+        CaptionColor
+        TextColor
+        VisibleFrameBorderThickness
+        SystemBackdropType
+        Last
+    End Enum
+
+    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
+        Settings1.Default.dodarkmode = False
+        Settings1.Default.Save()
+        lightmode()
+    End Sub
+
+    Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
+        Settings1.Default.dodarkmode = True
+        Settings1.Default.Save()
+        darkmode()
+    End Sub
+End Class
