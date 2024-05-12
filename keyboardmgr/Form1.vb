@@ -1,10 +1,12 @@
 ﻿Imports Microsoft.Win32
 Imports System.Runtime.InteropServices
 
+
 Public Class Form1
     '定义
     Public ThemeColor As Boolean
     Public color As Color
+    Public Shared dodarkmode As Boolean
     Dim hooks As Boolean
     Dim state As String
     Dim i As Integer
@@ -16,6 +18,7 @@ Public Class Form1
     Private Declare Function GetCursorPos Lib "user32" (ByRef lpPoint As POINTAPI) As Long '全屏坐标声明
     Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
     Dim P As POINTAPI
+
 
     Private Structure POINTAPI '声明坐标变量
         Public x As Integer '声明坐标变量为32位
@@ -71,7 +74,16 @@ Public Class Form1
         Next
         BackColor = Color.LightSeaGreen
         TextBox1.BackColor = Color.MediumTurquoise
+        TextBox2.BackColor = Color.MediumTurquoise
         Button1.BackColor = Color.MediumTurquoise
+        Button2.BackColor = Color.MediumTurquoise
+        Button3.BackColor = Color.MediumTurquoise
+        Button4.BackColor = Color.MediumTurquoise
+        ComboBox1.BackColor = Color.MediumTurquoise
+        GroupBox1.BackColor = Color.LightSeaGreen
+        GroupBox2.BackColor = Color.LightSeaGreen
+        GroupBox3.BackColor = Color.LightSeaGreen
+        dodarkmode = True
     End Sub
     Sub lightmode()
         Panel1.BackColor = Color.DeepSkyBlue
@@ -80,16 +92,55 @@ Public Class Form1
         Next
         BackColor = Color.LightCyan
         TextBox1.BackColor = Color.PaleTurquoise
+        TextBox2.BackColor = Color.PaleTurquoise
         Button1.BackColor = Color.PaleTurquoise
+        Button2.BackColor = Color.PaleTurquoise
+        Button3.BackColor = Color.PaleTurquoise
+        Button4.BackColor = Color.PaleTurquoise
+        ComboBox1.BackColor = Color.PaleTurquoise
+        GroupBox1.BackColor = Color.LightCyan
+        GroupBox2.BackColor = Color.LightCyan
+        GroupBox3.BackColor = Color.LightCyan
+        dodarkmode = False
     End Sub
+    '窗体load事件
+
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         NumericUpDown1.Value = Settings1.Default.clicktime
-        'todo:检测是否设置了“跟随系统”以及设置radiobutton状态、深浅色模式
-        Select Case
-           Case
+        NumericUpDown2.Value = Settings1.Default.sendtime
+        '检测是否设置了“跟随系统”以及设置radiobutton状态、深浅色模式
+        If Settings1.Default.doAutochange = True Then
+            GetThemeColor()
+            RadioButton5.Checked = True
+            AddHandler SystemEvents.UserPreferenceChanged, AddressOf ChangeTheme
+        ElseIf Settings1.Default.dodarkmode = True Then
+            darkmode()
+            RadioButton4.Checked = True
+        Else
+            lightmode()
+            RadioButton3.Checked = True
+        End If
+        Select Case Settings1.Default.startpage
+            Case 1
+                TabControl1.SelectedTab = TabPage0
+                ComboBox1.Text = "欢迎"
+            Case 2
+                TabControl1.SelectedTab = TabPage1
+                ComboBox1.Text = "连点"
+            Case 3
+                TabControl1.SelectedTab = TabPage2
+                ComboBox1.Text = "连发"
+            Case Else
+                TabControl1.SelectedTab = TabPage0
+                ComboBox1.Text = "欢迎"
         End Select
-        AddHandler SystemEvents.UserPreferenceChanged, AddressOf ChangeTheme
-        GetThemeColor()
+
+        '内测版关闭没做完的功能
+        'LinkLabel2.Visible = False
+        'GroupBox2.Visible = False
+        'GroupBox4.Visible = False
     End Sub
 
     '标题栏
@@ -154,10 +205,7 @@ Public Class Form1
             Timer2.Enabled = True
             Timer2.Interval = NumericUpDown1.Value
         End If
-        RadioButton1.Enabled = False
-        RadioButton2.Enabled = False
-        Button1.Enabled = False
-        NumericUpDown1.Enabled = False
+        TabControl1.Enabled = False
         Settings1.Default.clicktime = NumericUpDown1.Value
         Settings1.Default.Save()
         Form2.Show()
@@ -216,14 +264,61 @@ Public Class Form1
     End Enum
 
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
+        Settings1.Default.doAutochange = False
         Settings1.Default.dodarkmode = False
         Settings1.Default.Save()
         lightmode()
     End Sub
 
     Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
+        Settings1.Default.doAutochange = False
         Settings1.Default.dodarkmode = True
         Settings1.Default.Save()
         darkmode()
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        '设置项“startpage”含义：1=欢迎 2=连点 3=连发 其它=欢迎（默认）
+        Select Case ComboBox1.SelectedItem
+            Case "欢迎"
+                Settings1.Default.startpage = 1
+            Case "连点"
+                Settings1.Default.startpage = 2
+            Case "连发"
+                Settings1.Default.startpage = 3
+            Case Else
+                Settings1.Default.startpage = 1
+        End Select
+        Settings1.Default.Save()
+    End Sub
+    '连发
+
+    Sub CreateClipBoard(ByVal CopyText As String)
+        Clipboard.Clear()
+        Clipboard.SetText(CopyText)
+    End Sub
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        CreateClipBoard(TextBox2.Text)
+        Timer3.Enabled = True
+        Timer3.Interval = NumericUpDown2.Value
+        TabControl1.Enabled = False
+        Settings1.Default.sendtime = NumericUpDown2.Value
+        Settings1.Default.Save()
+
+    End Sub
+
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        Dim sk As SendKeys
+#Disable Warning BC42025
+        sk.Send("^v")
+#Enable Warning BC42025
+#Disable Warning BC42025
+        sk.Send("{Enter}")
+#Enable Warning BC42025
+        Form2.Show()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Form3.Show()
     End Sub
 End Class

@@ -32,6 +32,9 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -39,7 +42,18 @@ Partial Class Form1
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.RadioButton5 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
@@ -54,10 +68,17 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage2.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -73,6 +94,7 @@ Partial Class Form1
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(344, 360)
+        Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.TabControl1.TabIndex = 0
         '
         'TabPage0
@@ -110,7 +132,8 @@ Partial Class Form1
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(296, 96)
         Me.TextBox1.TabIndex = 3
-        Me.TextBox1.Text = "By LCS 2020-2024" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一个开源小巧的连点连发工具，支持顺序连发及图片连发" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "What's new:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.0 基本功能加入"
+        Me.TextBox1.Text = "By LCS 2020-2024" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一个开源小巧的连点连发工具，支持顺序连发及图片连发" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "What's new:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.1 基础两大功能完成" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0" &
+    ".0 构建ui"
         '
         'LinkLabel1
         '
@@ -145,12 +168,8 @@ Partial Class Form1
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.LightCyan
-        Me.TabPage1.Controls.Add(Me.Label8)
-        Me.TabPage1.Controls.Add(Me.NumericUpDown1)
-        Me.TabPage1.Controls.Add(Me.Label7)
-        Me.TabPage1.Controls.Add(Me.Button1)
-        Me.TabPage1.Controls.Add(Me.RadioButton2)
-        Me.TabPage1.Controls.Add(Me.RadioButton1)
+        Me.TabPage1.Controls.Add(Me.GroupBox4)
+        Me.TabPage1.Controls.Add(Me.GroupBox3)
         Me.TabPage1.Location = New System.Drawing.Point(4, 26)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TabPage1.Name = "TabPage1"
@@ -159,10 +178,51 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "连点"
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Button5)
+        Me.GroupBox4.Location = New System.Drawing.Point(8, 208)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(320, 100)
+        Me.GroupBox4.TabIndex = 7
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "鼠标宏"
+        '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue
+        Me.Button5.FlatAppearance.BorderSize = 2
+        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button5.Location = New System.Drawing.Point(208, 40)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(96, 40)
+        Me.Button5.TabIndex = 3
+        Me.Button5.Text = "创建"
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label8)
+        Me.GroupBox3.Controls.Add(Me.NumericUpDown1)
+        Me.GroupBox3.Controls.Add(Me.Label7)
+        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.RadioButton2)
+        Me.GroupBox3.Controls.Add(Me.RadioButton1)
+        Me.GroupBox3.Location = New System.Drawing.Point(8, 8)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(320, 184)
+        Me.GroupBox3.TabIndex = 6
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "连点"
+        '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(208, 112)
+        Me.Label8.Location = New System.Drawing.Point(200, 96)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(32, 17)
         Me.Label8.TabIndex = 5
@@ -172,7 +232,7 @@ Partial Class Form1
         '
         Me.NumericUpDown1.BackColor = System.Drawing.Color.LightCyan
         Me.NumericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.NumericUpDown1.Location = New System.Drawing.Point(152, 112)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(144, 96)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
@@ -184,7 +244,7 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(24, 112)
+        Me.Label7.Location = New System.Drawing.Point(16, 96)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(128, 17)
         Me.Label7.TabIndex = 3
@@ -199,7 +259,7 @@ Partial Class Form1
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.Location = New System.Drawing.Point(216, 264)
+        Me.Button1.Location = New System.Drawing.Point(208, 128)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(96, 40)
         Me.Button1.TabIndex = 2
@@ -209,7 +269,7 @@ Partial Class Form1
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(24, 72)
+        Me.RadioButton2.Location = New System.Drawing.Point(16, 56)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(74, 21)
         Me.RadioButton2.TabIndex = 1
@@ -220,7 +280,7 @@ Partial Class Form1
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
-        Me.RadioButton1.Location = New System.Drawing.Point(24, 32)
+        Me.RadioButton1.Location = New System.Drawing.Point(16, 16)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(74, 21)
         Me.RadioButton1.TabIndex = 0
@@ -231,6 +291,8 @@ Partial Class Form1
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.Color.LightCyan
+        Me.TabPage2.Controls.Add(Me.GroupBox2)
+        Me.TabPage2.Controls.Add(Me.GroupBox1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 26)
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TabPage2.Name = "TabPage2"
@@ -239,9 +301,125 @@ Partial Class Form1
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "连发"
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Button4)
+        Me.GroupBox2.Controls.Add(Me.Button3)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 224)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(312, 80)
+        Me.GroupBox2.TabIndex = 1
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "高级刷屏"
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue
+        Me.Button4.FlatAppearance.BorderSize = 2
+        Me.Button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button4.Location = New System.Drawing.Point(208, 24)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(96, 40)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "图片连发"
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue
+        Me.Button3.FlatAppearance.BorderSize = 2
+        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button3.Location = New System.Drawing.Point(16, 24)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(96, 40)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "列表连发"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label13)
+        Me.GroupBox1.Controls.Add(Me.NumericUpDown2)
+        Me.GroupBox1.Controls.Add(Me.Label12)
+        Me.GroupBox1.Controls.Add(Me.Button2)
+        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 8)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(312, 208)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "连发刷屏"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(184, 136)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(32, 17)
+        Me.Label13.TabIndex = 8
+        Me.Label13.Text = "毫秒"
+        '
+        'NumericUpDown2
+        '
+        Me.NumericUpDown2.BackColor = System.Drawing.Color.LightCyan
+        Me.NumericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown2.Location = New System.Drawing.Point(128, 136)
+        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown2.Name = "NumericUpDown2"
+        Me.NumericUpDown2.Size = New System.Drawing.Size(48, 19)
+        Me.NumericUpDown2.TabIndex = 7
+        Me.NumericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.NumericUpDown2.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(8, 136)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(128, 17)
+        Me.Label12.TabIndex = 6
+        Me.Label12.Text = "每次发送的间隔时间："
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue
+        Me.Button2.FlatAppearance.BorderSize = 2
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button2.Location = New System.Drawing.Point(208, 160)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(96, 40)
+        Me.Button2.TabIndex = 5
+        Me.Button2.Text = "开始"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'TextBox2
+        '
+        Me.TextBox2.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.TextBox2.Location = New System.Drawing.Point(8, 16)
+        Me.TextBox2.Multiline = True
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox2.Size = New System.Drawing.Size(296, 112)
+        Me.TextBox2.TabIndex = 4
+        '
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.LightCyan
+        Me.TabPage3.Controls.Add(Me.Label11)
+        Me.TabPage3.Controls.Add(Me.ComboBox1)
         Me.TabPage3.Controls.Add(Me.RadioButton5)
         Me.TabPage3.Controls.Add(Me.RadioButton4)
         Me.TabPage3.Controls.Add(Me.RadioButton3)
@@ -253,15 +431,33 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 3
         Me.TabPage3.Text = "选项"
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(16, 152)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(176, 17)
+        Me.Label11.TabIndex = 6
+        Me.Label11.Text = "起始页设置（重启程序后生效）"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"欢迎", "连点", "连发"})
+        Me.ComboBox1.Location = New System.Drawing.Point(16, 176)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(144, 25)
+        Me.ComboBox1.TabIndex = 5
+        '
         'RadioButton5
         '
         Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Checked = True
         Me.RadioButton5.Location = New System.Drawing.Point(16, 88)
         Me.RadioButton5.Name = "RadioButton5"
         Me.RadioButton5.Size = New System.Drawing.Size(199, 21)
         Me.RadioButton5.TabIndex = 4
-        Me.RadioButton5.TabStop = True
         Me.RadioButton5.Text = "跟随系统（要求Win10 1809+）"
         Me.RadioButton5.UseVisualStyleBackColor = True
         '
@@ -363,12 +559,11 @@ Partial Class Form1
         '
         'ToolTip1
         '
-        Me.ToolTip1.AutoPopDelay = 5000
+        Me.ToolTip1.AutoPopDelay = 1000
         Me.ToolTip1.BackColor = System.Drawing.Color.LightCyan
         Me.ToolTip1.InitialDelay = 500
         Me.ToolTip1.IsBalloon = True
-        Me.ToolTip1.ReshowDelay = 100
-        Me.ToolTip1.ShowAlways = True
+        Me.ToolTip1.ReshowDelay = 0
         Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.[Error]
         Me.ToolTip1.ToolTipTitle = "错误"
         '
@@ -381,12 +576,14 @@ Partial Class Form1
         'ToolTip2
         '
         Me.ToolTip2.AutomaticDelay = 5000
-        Me.ToolTip2.AutoPopDelay = 100000
+        Me.ToolTip2.AutoPopDelay = 1000
         Me.ToolTip2.InitialDelay = 5000
         Me.ToolTip2.IsBalloon = True
-        Me.ToolTip2.ReshowDelay = 1000
-        Me.ToolTip2.ShowAlways = True
+        Me.ToolTip2.ReshowDelay = 0
         Me.ToolTip2.ToolTipTitle = "信息"
+        '
+        'Timer3
+        '
         '
         'Form1
         '
@@ -406,8 +603,15 @@ Partial Class Form1
         Me.TabPage0.ResumeLayout(False)
         Me.TabPage0.PerformLayout()
         Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage2.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -446,4 +650,19 @@ Partial Class Form1
     Friend WithEvents RadioButton5 As RadioButton
     Friend WithEvents RadioButton4 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Label12 As Label
+    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Timer3 As Timer
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Button5 As Button
 End Class
