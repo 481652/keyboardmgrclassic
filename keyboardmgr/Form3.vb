@@ -7,7 +7,14 @@ Public Class Form3
     Dim crdatetime As Date = Date.Now '文件新建时间
     Dim chdatetime As Date = Date.Now '文件修改时间
     Dim savedpath As String
-
+    Private Sub 添加新行ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 添加新行AToolStripMenuItem.Click
+        If line = 0 Then
+            ListBox1.Items.Add("新行")
+        Else
+            ListBox1.Items.Insert(line, "新行")
+        End If
+        linechanged()
+    End Sub
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         If line = 0 Then
             ListBox1.Items.Add("新行")
@@ -103,5 +110,14 @@ Public Class Form3
         End Try
     End Sub
 
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
+        startopen()
+    End Sub
 
+    Private Sub 打开ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 打开ToolStripMenuItem.Click
+        startopen()
+    End Sub
+    Private Sub startopen()
+
+    End Sub
 End Class

@@ -30,6 +30,7 @@ Partial Class Form3
         Me.打开ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.保存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.操作ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.添加新行AToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -77,28 +78,35 @@ Partial Class Form3
         '
         Me.新建ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.AddFile_16x
         Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
-        Me.新建ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.新建ToolStripMenuItem.Text = "新建列表连发"
+        Me.新建ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.新建ToolStripMenuItem.Text = "新建列表连发（&N）"
         '
         '打开ToolStripMenuItem
         '
         Me.打开ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.Open_16x
         Me.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem"
-        Me.打开ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.打开ToolStripMenuItem.Text = "打开列表连发"
+        Me.打开ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.打开ToolStripMenuItem.Text = "打开列表连发（&O）"
         '
         '保存ToolStripMenuItem
         '
         Me.保存ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.Save_24x
         Me.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem"
-        Me.保存ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.保存ToolStripMenuItem.Text = "保存列表连发"
+        Me.保存ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.保存ToolStripMenuItem.Text = "保存列表连发（&S）"
         '
         '操作ToolStripMenuItem
         '
+        Me.操作ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.添加新行AToolStripMenuItem})
         Me.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem"
         Me.操作ToolStripMenuItem.Size = New System.Drawing.Size(44, 21)
         Me.操作ToolStripMenuItem.Text = "操作"
+        '
+        '添加新行AToolStripMenuItem
+        '
+        Me.添加新行AToolStripMenuItem.Name = "添加新行AToolStripMenuItem"
+        Me.添加新行AToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.添加新行AToolStripMenuItem.Text = "添加新行(&A)"
         '
         'SplitContainer1
         '
@@ -340,4 +348,5 @@ Partial Class Form3
     Friend WithEvents Label3 As Label
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents 添加新行AToolStripMenuItem As ToolStripMenuItem
 End Class
