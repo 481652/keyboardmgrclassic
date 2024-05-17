@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Threading
 Public Class Form3
     Dim line As String
     Dim dosavefile As Boolean = False
@@ -45,42 +46,61 @@ Public Class Form3
     End Sub
 
     Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
-        save()
+        startsave()
     End Sub
 
     Private Sub 保存ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 保存ToolStripMenuItem.Click
-        save()
+        startsave()
     End Sub
-
+    Private Sub startsave() '启动保存线程
+        Dim savethr As Thread = New Thread(AddressOf save)
+        savethr.Priority = ThreadPriority.BelowNormal
+        savethr.Start()
+    End Sub
     Private Sub save()
-        If dosavefile = False Then
-            If (SaveFileDialog1.ShowDialog() = DialogResult.OK) Then
-                Try
-                    crdatetime = Date.Now
-                    File.Delete(savefile)
+        Try
+            If dosavefile = False Then
+                If (SaveFileDialog1.ShowDialog() = DialogResult.OK) Then
                     File.Create(savefile)
+                    chdatetime = Date.Now
+                    File.SetLastWriteTime(savefile, chdatetime)
+                    crdatetime = Date.Now
                     File.SetCreationTime(savefile, crdatetime)
-                    Dim savestr As StreamWriter = File.CreateText(savefile)
+                    Dim savestr As StreamWriter = New StreamWriter(savefile, False)
                     Using (savestr)
                         Dim i As Integer
                         For i = 0 To ListBox1.Items.Count()
                             savestr.WriteLine（ListBox1.GetItemText(i)）
                         Next
+                        savestr.Close()
                     End Using
                     Text = "[列表已保存]列表连发编辑器"
                     dosavefile = True
                     savedpath = savefile
-                Catch er As Exception
-                    MsgBox("保存失败，原因：" & er.ToString(), MsgBoxStyle.OkOnly, "")
+                Else
                     Text = "[列表未保存]列表连发编辑器"
-                End Try
-            Else
-                Text = "[列表未保存]列表连发编辑器"
+                End If
+            Else '文件已经“另存为”了
+                chdatetime = Date.Now
+                File.SetLastWriteTime(savedpath, chdatetime)
+                crdatetime = Date.Now
+                File.SetCreationTime(savedpath, crdatetime)
+                Dim savestr As StreamWriter = New StreamWriter(savedpath, False)
+                Using (savestr)
+                    Dim i As Integer
+                    For i = 0 To ListBox1.Items.Count()
+                        savestr.WriteLine（ListBox1.GetItemText(i)）
+                    Next
+                    savestr.Close()
+                End Using
+                Text = "[列表已保存]列表连发编辑器"
             End If
-        Else '文件已经“另存为”了
-
-
-        End If
+        Catch er As Exception
+            MsgBox("保存失败，原因：" & er.ToString(), MsgBoxStyle.OkOnly, "")
+            Text = "[列表未保存]列表连发编辑器"
+            dosavefile = False
+            savedpath = ""
+        End Try
     End Sub
 
 
