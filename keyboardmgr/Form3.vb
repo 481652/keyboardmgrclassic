@@ -1,11 +1,11 @@
 ﻿Imports System.IO
 Public Class Form3
     Dim line As String
-    Dim dosaved As Boolean
     Dim dosavefile As Boolean = False
     Dim savefile As String = SaveFileDialog1.FileName '保存路径名
     Dim crdatetime As Date = Date.Now '文件新建时间
     Dim chdatetime As Date = Date.Now '文件修改时间
+    Dim savedpath As String
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         If line = 0 Then
@@ -69,6 +69,7 @@ Public Class Form3
                     End Using
                     Text = "[列表已保存]列表连发编辑器"
                     dosavefile = True
+                    savedpath = savefile
                 Catch er As Exception
                     MsgBox("保存失败，原因：" & er.ToString(), MsgBoxStyle.OkOnly, "")
                     Text = "[列表未保存]列表连发编辑器"
