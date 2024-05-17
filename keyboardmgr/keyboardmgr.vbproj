@@ -97,6 +97,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="err.Designer.vb">
+      <DependentUpon>err.vb</DependentUpon>
+    </Compile>
+    <Compile Include="err.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="exp.Designer.vb">
+      <DependentUpon>exp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="exp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,24 @@
       <DependentUpon>Form3.vb</DependentUpon>
     </Compile>
     <Compile Include="Form3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.vb">
+      <DependentUpon>Form4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.vb">
+      <DependentUpon>Form5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="info.Designer.vb">
+      <DependentUpon>info.vb</DependentUpon>
+    </Compile>
+    <Compile Include="info.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MouseHooker.vb" />
@@ -137,6 +167,12 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+    <Compile Include="warn.Designer.vb">
+      <DependentUpon>warn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="warn.vb">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
