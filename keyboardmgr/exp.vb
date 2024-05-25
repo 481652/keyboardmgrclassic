@@ -1,15 +1,20 @@
-﻿Imports System.Windows.Forms
+﻿Public Class exp
 
-Public Class exp
+    Private Sub OK_Button_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles OK_Button.Click
+        DialogResult = DialogResult.OK
+        Form1.Show()
+        Close()
+    End Sub
+    Private Sub Practise_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
 
-    Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.Close()
     End Sub
 
-    Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Close()
+    Private Sub exp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LinkLabel1.LinkColor = Form1.color
     End Sub
 
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start("https://github.com/481652/keyboardmgr/issues")
+    End Sub
 End Class

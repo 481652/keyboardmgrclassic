@@ -105,7 +105,7 @@ Partial Class Form3
         '添加新行AToolStripMenuItem
         '
         Me.添加新行AToolStripMenuItem.Name = "添加新行AToolStripMenuItem"
-        Me.添加新行AToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.添加新行AToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.添加新行AToolStripMenuItem.Text = "添加新行(&A)"
         '
         'SplitContainer1

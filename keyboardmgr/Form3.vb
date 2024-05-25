@@ -7,6 +7,13 @@ Public Class Form3
     Dim crdatetime As Date = Date.Now '文件新建时间
     Dim chdatetime As Date = Date.Now '文件修改时间
     Dim savedpath As String
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Form1.dodarkmode = True Then
+
+        Else
+
+        End If
+    End Sub
     Private Sub 添加新行ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 添加新行AToolStripMenuItem.Click
         If line = 0 Then
             ListBox1.Items.Add("新行")
@@ -120,4 +127,6 @@ Public Class Form3
     Private Sub startopen()
 
     End Sub
+
+
 End Class

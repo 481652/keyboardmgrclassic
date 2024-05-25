@@ -19,7 +19,6 @@ Public Class Form1
     Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
     Dim P As POINTAPI
 
-
     Private Structure POINTAPI '声明坐标变量
         Public x As Integer '声明坐标变量为32位
         Public y As Integer '声明坐标变量为32位
@@ -138,9 +137,10 @@ Public Class Form1
         End Select
 
         '内测版关闭没做完的功能
-        'LinkLabel2.Visible = False
-        'GroupBox2.Visible = False
-        'GroupBox4.Visible = False
+        LinkLabel2.Visible = False
+        LinkLabel3.Visible = False
+        GroupBox2.Visible = False
+        GroupBox4.Visible = False
     End Sub
 
     '标题栏
@@ -320,5 +320,9 @@ Public Class Form1
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Form3.Show()
+    End Sub
+
+    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
+
     End Sub
 End Class
