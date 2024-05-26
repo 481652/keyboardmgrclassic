@@ -110,7 +110,7 @@ Public Class Form3
                 Text = "[列表已保存]列表连发编辑器"
             End If
         Catch er As Exception
-            MsgBox("保存失败，原因：" & er.ToString(), MsgBoxStyle.OkOnly, "")
+            showexpdlg("列表连发编辑器保存错误", er.ToString)
             Text = "[列表未保存]列表连发编辑器"
             dosavefile = False
             savedpath = ""

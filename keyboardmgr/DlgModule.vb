@@ -14,4 +14,5 @@
         frm.TextBox1.AppendText(text)
         frm.ShowDialog()
     End Sub
+    'todo 更多dlg
 End Module

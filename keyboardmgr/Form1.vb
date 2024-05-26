@@ -183,9 +183,13 @@ Public Class Form1
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://481652.github.io/")
     End Sub
-    'todo:github页面
+    'github页面
     Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
-
+        Process.Start("https://github.com/481652/keyboardmgr")
+    End Sub
+    '反馈问题
+    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
+        Process.Start("https://github.com/481652/keyboardmgr/issues")
     End Sub
     '鼠标连点
 
@@ -322,7 +326,5 @@ Public Class Form1
         Form3.Show()
     End Sub
 
-    Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
 
-    End Sub
 End Class
