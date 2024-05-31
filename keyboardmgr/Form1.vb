@@ -82,6 +82,7 @@ Public Class Form1
         GroupBox1.BackColor = Color.LightSeaGreen
         GroupBox2.BackColor = Color.LightSeaGreen
         GroupBox3.BackColor = Color.LightSeaGreen
+        CheckBox1.BackColor = Color.LightSeaGreen
         dodarkmode = True
     End Sub
     Sub lightmode()
@@ -100,6 +101,7 @@ Public Class Form1
         GroupBox1.BackColor = Color.LightCyan
         GroupBox2.BackColor = Color.LightCyan
         GroupBox3.BackColor = Color.LightCyan
+        CheckBox1.BackColor = Color.LightCyan
         dodarkmode = False
     End Sub
     '窗体load事件
@@ -135,12 +137,15 @@ Public Class Form1
                 TabControl1.SelectedTab = TabPage0
                 ComboBox1.Text = "欢迎"
         End Select
+        Label4.Text = Text
 
         '内测版关闭没做完的功能
-        LinkLabel2.Visible = False
-        LinkLabel3.Visible = False
-        GroupBox2.Visible = False
-        GroupBox4.Visible = False
+
+        'LinkLabel2.Visible = False
+        'LinkLabel3.Visible = False
+        'GroupBox2.Visible = False
+        'GroupBox4.Visible = False
+
     End Sub
 
     '标题栏
@@ -326,5 +331,15 @@ Public Class Form1
         Form3.Show()
     End Sub
 
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Form4.Show()
+    End Sub
 
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+
+    End Sub
 End Class

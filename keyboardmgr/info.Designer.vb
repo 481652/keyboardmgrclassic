@@ -92,6 +92,7 @@ Partial Class info
         Me.AcceptButton = Me.OK_Button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.LightCyan
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(370, 222)
         Me.Controls.Add(Me.Label2)

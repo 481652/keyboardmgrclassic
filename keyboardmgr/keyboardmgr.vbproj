@@ -177,6 +177,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="err.resx">
+      <DependentUpon>err.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="exp.resx">
       <DependentUpon>exp.vb</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +203,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warn.resx">
+      <DependentUpon>warn.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
