@@ -85,4 +85,28 @@ Partial Friend NotInheritable Class Settings1
             Me("sendtime") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("键盘管家")>  _
+    Public Property title() As String
+        Get
+            Return CType(Me("title"),String)
+        End Get
+        Set
+            Me("title") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+    Public Property doforceclose() As Boolean
+        Get
+            Return CType(Me("doforceclose"),Boolean)
+        End Get
+        Set
+            Me("doforceclose") = value
+        End Set
+    End Property
 End Class

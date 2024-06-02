@@ -56,6 +56,7 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -75,9 +76,12 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.TrayIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -90,6 +94,7 @@ Partial Class Form1
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -493,6 +498,16 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 3
         Me.TabPage3.Text = "选项"
         '
+        'TextBox3
+        '
+        Me.TextBox3.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.TextBox3.Location = New System.Drawing.Point(184, 64)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
+        Me.TextBox3.Size = New System.Drawing.Size(152, 23)
+        Me.TextBox3.TabIndex = 9
+        Me.TextBox3.Text = "键盘管家"
+        '
         'Label16
         '
         Me.Label16.AutoSize = True
@@ -667,26 +682,43 @@ Partial Class Form1
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "|隐藏"
         '
-        'NotifyIcon1
+        'TrayIcon
         '
-        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
-        Me.NotifyIcon1.Text = "键盘管家"
-        Me.NotifyIcon1.Visible = True
+        Me.TrayIcon.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.TrayIcon.Icon = CType(resources.GetObject("TrayIcon.Icon"), System.Drawing.Icon)
+        Me.TrayIcon.Text = "键盘管家"
+        Me.TrayIcon.Visible = True
         '
         'ContextMenuStrip1
         '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 114)
         '
-        'TextBox3
+        'ToolStripMenuItem1
         '
-        Me.TextBox3.BackColor = System.Drawing.Color.PaleTurquoise
-        Me.TextBox3.Location = New System.Drawing.Point(184, 64)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(152, 23)
-        Me.TextBox3.TabIndex = 9
-        Me.TextBox3.Text = "键盘管家"
+        Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(174, 22)
+        Me.ToolStripMenuItem1.Text = "显示主程序（F4）"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(174, 22)
+        Me.ToolStripMenuItem2.Text = "连点"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(174, 22)
+        Me.ToolStripMenuItem3.Text = "连发"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(174, 22)
+        Me.ToolStripMenuItem4.Text = "退出程序"
         '
         'Form1
         '
@@ -719,6 +751,7 @@ Partial Class Form1
         Me.TabPage3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -771,10 +804,14 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label15 As Label
     Friend WithEvents Button6 As Button
-    Friend WithEvents NotifyIcon1 As NotifyIcon
+    Friend WithEvents TrayIcon As NotifyIcon
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents Label2 As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label16 As Label
     Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
 End Class

@@ -18,6 +18,9 @@ Public Class Form1
     Private Declare Function GetCursorPos Lib "user32" (ByRef lpPoint As POINTAPI) As Long '全屏坐标声明
     Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
     Dim P As POINTAPI
+    '注册热键
+    Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Boolean
+    Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer) As Boolean
 
     Private Structure POINTAPI '声明坐标变量
         Public x As Integer '声明坐标变量为32位
@@ -104,6 +107,13 @@ Public Class Form1
         CheckBox1.BackColor = Color.LightCyan
         dodarkmode = False
     End Sub
+    Protected Overrides Sub WndProc(ByRef m As Message) '注册热键
+        If m.Msg = 786 Then
+            Show（）
+            Activate() '显示主界面
+        End If
+        MyBase.WndProc(m)
+    End Sub
     '窗体load事件
 
 
@@ -137,20 +147,23 @@ Public Class Form1
                 TabControl1.SelectedTab = TabPage0
                 ComboBox1.Text = "欢迎"
         End Select
+        Text = Settings1.Default.title
         Label4.Text = Text
-
+        RegisterHotKey(Handle, 0, 0, Keys.F2)
         '内测版关闭没做完的功能
 
-        'LinkLabel2.Visible = False
-        'LinkLabel3.Visible = False
-        'GroupBox2.Visible = False
-        'GroupBox4.Visible = False
+        GroupBox2.Visible = False
+        GroupBox4.Visible = False
 
     End Sub
 
     '标题栏
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        Application.Exit()
+        If Settings1.Default.doforceclose = True Then
+            Application.Exit()
+        Else
+            Hide() '隐藏窗体
+        End If
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
@@ -336,10 +349,46 @@ Public Class Form1
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-
+        If CheckBox1.Checked = True Then
+            Settings1.Default.doforceclose = True
+        Else
+            Settings1.Default.doforceclose = False
+        End If
+        Settings1.Default.Save()
     End Sub
 
     Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+        Text = TextBox3.Text
+        Label4.Text = TextBox3.Text
+        Settings1.Default.title = TextBox3.Text
+        Settings1.Default.Save()
+    End Sub
 
+    Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+        Application.Exit()
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        Show()
+        Activate()
+        TabControl1.SelectedTab = TabPage1
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        Show()
+        Activate()
+        TabControl1.SelectedTab = TabPage2
+    End Sub
+
+    Private Sub TrayIcon_MouseClick(sender As Object, e As MouseEventArgs) Handles TrayIcon.MouseClick
+        If e.Button = Windows.Forms.MouseButtons.Left Then
+            Show()
+            Activate()
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        Show()
+        Activate()
     End Sub
 End Class

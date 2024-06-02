@@ -127,6 +127,8 @@ Public Class Form3
     Private Sub startopen()
 
     End Sub
+    '收尾工作
+    Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
 
-
+    End Sub
 End Class

@@ -17,5 +17,11 @@
     <Setting Name="sendtime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
+    <Setting Name="title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">键盘管家</Value>
+    </Setting>
+    <Setting Name="doforceclose" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
