@@ -149,7 +149,7 @@ Public Class Form1
         End Select
         Text = Settings1.Default.title
         Label4.Text = Text
-        RegisterHotKey(Handle, 0, 0, Keys.F2)
+        RegisterHotKey(Handle, 0, 0, Keys.F4)
         '内测版关闭没做完的功能
 
         GroupBox2.Visible = False
