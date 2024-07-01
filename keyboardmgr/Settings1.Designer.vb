@@ -77,9 +77,9 @@ Partial Friend NotInheritable Class Settings1
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
-    Public Property sendtime() As Integer
+    Public Property sendtime() As Decimal
         Get
-            Return CType(Me("sendtime"),Integer)
+            Return CType(Me("sendtime"),Decimal)
         End Get
         Set
             Me("sendtime") = value
@@ -107,6 +107,18 @@ Partial Friend NotInheritable Class Settings1
         End Get
         Set
             Me("doforceclose") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("10")>  _
+    Public Property imgsendtime() As Decimal
+        Get
+            Return CType(Me("imgsendtime"),Decimal)
+        End Get
+        Set
+            Me("imgsendtime") = value
         End Set
     End Property
 End Class

@@ -97,6 +97,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="savedlg.Designer.vb">
+      <DependentUpon>savedlg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="savedlg.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DlgModule.vb" />
     <Compile Include="err.Designer.vb">
       <DependentUpon>err.vb</DependentUpon>
@@ -203,6 +209,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="savedlg.resx">
+      <DependentUpon>savedlg.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="warn.resx">
       <DependentUpon>warn.vb</DependentUpon>

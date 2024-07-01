@@ -26,7 +26,6 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage0 = New System.Windows.Forms.TabPage()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
@@ -114,7 +113,6 @@ Partial Class Form1
         'TabPage0
         '
         Me.TabPage0.BackColor = System.Drawing.Color.LightCyan
-        Me.TabPage0.Controls.Add(Me.Label15)
         Me.TabPage0.Controls.Add(Me.Label14)
         Me.TabPage0.Controls.Add(Me.LinkLabel3)
         Me.TabPage0.Controls.Add(Me.LinkLabel2)
@@ -128,16 +126,6 @@ Partial Class Form1
         Me.TabPage0.Size = New System.Drawing.Size(344, 346)
         Me.TabPage0.TabIndex = 2
         Me.TabPage0.Text = "欢迎"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.ForeColor = System.Drawing.Color.Red
-        Me.Label15.Location = New System.Drawing.Point(16, 56)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(97, 34)
-        Me.Label15.TabIndex = 7
-        Me.Label15.Text = "-未完成的版本" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-不稳定功能受限"
         '
         'Label14
         '
@@ -177,10 +165,11 @@ Partial Class Form1
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(312, 104)
+        Me.TextBox1.Size = New System.Drawing.Size(312, 128)
         Me.TextBox1.TabIndex = 3
-        Me.TextBox1.Text = "By LCS 2020-2024" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一个开源小巧的连点连发工具，即将支持顺序连发及图片连发" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "What's new:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.2 完善了用户体验" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1." &
-    "0.1 基础两大功能完成" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.0 构建ui"
+        Me.TextBox1.Text = "By LCS 2020-2024" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一个开源小巧的连点连发工具，即将支持更多功能" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "What's new:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1.0.0.0 正式版发布！增强了稳定性及易用性" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) &
+    "（很抱歉没有在这个版本加入列表连发等，但" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "我们将很快推出！）" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.3 新增托盘功能；可以更改标题了" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.2 完善了用户体验" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0." &
+    "1 基础两大功能完成" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.1.0.0 构建ui"
         '
         'LinkLabel1
         '
@@ -201,7 +190,7 @@ Partial Class Form1
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(201, 28)
         Me.Label6.TabIndex = 1
-        Me.Label6.Text = "欢迎使用键盘管家！"
+        Me.Label6.Text = "欢迎使用键鼠管家！"
         '
         'Label5
         '
@@ -503,10 +492,9 @@ Partial Class Form1
         Me.TextBox3.BackColor = System.Drawing.Color.PaleTurquoise
         Me.TextBox3.Location = New System.Drawing.Point(184, 64)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(152, 23)
         Me.TextBox3.TabIndex = 9
-        Me.TextBox3.Text = "键盘管家"
+        Me.TextBox3.Text = "键鼠管家"
         '
         'Label16
         '
@@ -656,7 +644,7 @@ Partial Class Form1
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(65, 19)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "键盘管家"
+        Me.Label4.Text = "键鼠管家"
         '
         'Panel1
         '
@@ -693,7 +681,7 @@ Partial Class Form1
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.ToolStripMenuItem4})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 114)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 92)
         '
         'ToolStripMenuItem1
         '
@@ -733,7 +721,7 @@ Partial Class Form1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Form1"
-        Me.Text = "键盘管家"
+        Me.Text = "键鼠管家"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage0.ResumeLayout(False)
         Me.TabPage0.PerformLayout()
@@ -787,7 +775,6 @@ Partial Class Form1
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Button2 As Button
-    Friend WithEvents Label12 As Label
     Friend WithEvents NumericUpDown2 As NumericUpDown
     Friend WithEvents Label13 As Label
     Friend WithEvents Timer3 As Timer
@@ -802,7 +789,6 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label15 As Label
     Friend WithEvents Button6 As Button
     Friend WithEvents TrayIcon As NotifyIcon
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
@@ -814,4 +800,5 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem4 As ToolStripMenuItem
+    Friend WithEvents Label12 As Label
 End Class

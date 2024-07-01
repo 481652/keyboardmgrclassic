@@ -35,6 +35,7 @@
         Form1.Timer1.Enabled = False
         Form1.Timer2.Enabled = False
         Form1.Timer3.Enabled = False
+        Form4.Timer.Enabled = False
         Form1.Focus()
         Close()
     End Sub

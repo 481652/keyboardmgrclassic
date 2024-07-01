@@ -27,17 +27,18 @@ Partial Class exp
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'OK_Button
         '
         Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.OK_Button.Location = New System.Drawing.Point(264, 176)
+        Me.OK_Button.Location = New System.Drawing.Point(272, 176)
         Me.OK_Button.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(78, 30)
         Me.OK_Button.TabIndex = 0
-        Me.OK_Button.Text = "继续"
+        Me.OK_Button.Text = "尝试继续"
         '
         'Label1
         '
@@ -46,15 +47,16 @@ Partial Class exp
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(16, 16)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(221, 25)
+        Me.Label1.Size = New System.Drawing.Size(238, 25)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "程序在运行时发生异常。"
+        Me.Label1.Text = ":( 程序在运行时发生异常。"
         '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(16, 48)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox1.Size = New System.Drawing.Size(336, 112)
         Me.TextBox1.TabIndex = 2
         '
@@ -62,12 +64,21 @@ Partial Class exp
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.LinkColor = System.Drawing.Color.Green
-        Me.LinkLabel1.Location = New System.Drawing.Point(176, 184)
+        Me.LinkLabel1.Location = New System.Drawing.Point(200, 184)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(56, 17)
         Me.LinkLabel1.TabIndex = 3
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "反馈问题"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(8, 184)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(188, 17)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "关闭程序请按标题栏上的关闭按钮"
         '
         'exp
         '
@@ -76,6 +87,7 @@ Partial Class exp
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(370, 222)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.TextBox1)
@@ -98,4 +110,5 @@ Partial Class exp
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Label2 As Label
 End Class

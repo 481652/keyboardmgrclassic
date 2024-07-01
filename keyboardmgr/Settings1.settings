@@ -14,7 +14,7 @@
     <Setting Name="startpage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="sendtime" Type="System.Int32" Scope="User">
+    <Setting Name="sendtime" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="title" Type="System.String" Scope="User">
@@ -22,6 +22,9 @@
     </Setting>
     <Setting Name="doforceclose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="imgsendtime" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

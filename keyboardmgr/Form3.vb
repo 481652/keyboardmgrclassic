@@ -3,10 +3,10 @@ Imports System.Threading
 Public Class Form3
     Dim line As String
     Dim dosavefile As Boolean = False
-    Dim savefile As String = SaveFileDialog1.FileName '保存路径名
-    Dim crdatetime As Date = Date.Now '文件新建时间
+    Dim savefile As String '保存路径名
     Dim chdatetime As Date = Date.Now '文件修改时间
     Dim savedpath As String
+    Dim donewest As Boolean = True
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Form1.dodarkmode = True Then
 
@@ -53,6 +53,8 @@ Public Class Form3
         Else
             Label3.Text = "第" & line & “行"
         End If
+        donewest = False
+        Text = "*[列表已保存]列表连发编辑器"
     End Sub
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
@@ -68,6 +70,7 @@ Public Class Form3
     End Sub
     Private Sub startsave() '启动保存线程
         Dim savethr As Thread = New Thread(AddressOf save)
+        savethr.SetApartmentState(ApartmentState.STA)
         savethr.Priority = ThreadPriority.BelowNormal
         savethr.Start()
     End Sub
@@ -75,11 +78,10 @@ Public Class Form3
         Try
             If dosavefile = False Then
                 If (SaveFileDialog1.ShowDialog() = DialogResult.OK) Then
+                    savefile = SaveFileDialog1.FileName
                     File.Create(savefile)
                     chdatetime = Date.Now
                     File.SetLastWriteTime(savefile, chdatetime)
-                    crdatetime = Date.Now
-                    File.SetCreationTime(savefile, crdatetime)
                     Dim savestr As StreamWriter = New StreamWriter(savefile, False)
                     Using (savestr)
                         Dim i As Integer
@@ -97,8 +99,6 @@ Public Class Form3
             Else '文件已经“另存为”了
                 chdatetime = Date.Now
                 File.SetLastWriteTime(savedpath, chdatetime)
-                crdatetime = Date.Now
-                File.SetCreationTime(savedpath, crdatetime)
                 Dim savestr As StreamWriter = New StreamWriter(savedpath, False)
                 Using (savestr)
                     Dim i As Integer
@@ -110,7 +110,7 @@ Public Class Form3
                 Text = "[列表已保存]列表连发编辑器"
             End If
         Catch er As Exception
-            showexpdlg("列表连发编辑器保存错误", er.ToString)
+            showexpdlg("列表连发编辑器保存错误，您的文件可能未被正确保存。", er.ToString)
             Text = "[列表未保存]列表连发编辑器"
             dosavefile = False
             savedpath = ""
@@ -125,7 +125,17 @@ Public Class Form3
         startopen()
     End Sub
     Private Sub startopen()
+        Dim openthr As Thread = New Thread(AddressOf open)
+        openthr.SetApartmentState(ApartmentState.STA)
+        openthr.Priority = ThreadPriority.BelowNormal
+        openthr.Start()
+    End Sub
+    Private Sub open()
+        Try
 
+        Catch er As Exception
+
+        End Try
     End Sub
     '收尾工作
     Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

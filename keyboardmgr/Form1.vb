@@ -77,6 +77,7 @@ Public Class Form1
         BackColor = Color.LightSeaGreen
         TextBox1.BackColor = Color.MediumTurquoise
         TextBox2.BackColor = Color.MediumTurquoise
+        TextBox3.BackColor = Color.MediumTurquoise
         Button1.BackColor = Color.MediumTurquoise
         Button2.BackColor = Color.MediumTurquoise
         Button3.BackColor = Color.MediumTurquoise
@@ -96,6 +97,7 @@ Public Class Form1
         BackColor = Color.LightCyan
         TextBox1.BackColor = Color.PaleTurquoise
         TextBox2.BackColor = Color.PaleTurquoise
+        TextBox3.BackColor = Color.PaleTurquoise
         Button1.BackColor = Color.PaleTurquoise
         Button2.BackColor = Color.PaleTurquoise
         Button3.BackColor = Color.PaleTurquoise
@@ -148,9 +150,10 @@ Public Class Form1
                 ComboBox1.Text = "欢迎"
         End Select
         Text = Settings1.Default.title
+        TextBox3.Text = Text
         Label4.Text = Text
         RegisterHotKey(Handle, 0, 0, Keys.F4)
-        '内测版关闭没做完的功能
+        '关闭没做完的功能
 
         GroupBox2.Visible = False
         GroupBox4.Visible = False
@@ -326,7 +329,7 @@ Public Class Form1
         TabControl1.Enabled = False
         Settings1.Default.sendtime = NumericUpDown2.Value
         Settings1.Default.Save()
-
+        Form2.Show()
     End Sub
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
@@ -337,7 +340,7 @@ Public Class Form1
 #Disable Warning BC42025
         sk.Send("{Enter}")
 #Enable Warning BC42025
-        Form2.Show()
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -391,4 +394,6 @@ Public Class Form1
         Show()
         Activate()
     End Sub
+
+
 End Class

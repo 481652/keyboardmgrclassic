@@ -26,9 +26,6 @@ Partial Class Form3
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.新建ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.打开ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.保存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.操作ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.添加新行AToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
@@ -37,17 +34,22 @@ Partial Class Form3
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.新建ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.打开ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.保存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -73,27 +75,6 @@ Partial Class Form3
         Me.ToolStripMenuItem.Name = "ToolStripMenuItem"
         Me.ToolStripMenuItem.Size = New System.Drawing.Size(44, 21)
         Me.ToolStripMenuItem.Text = "文件"
-        '
-        '新建ToolStripMenuItem
-        '
-        Me.新建ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.AddFile_16x
-        Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
-        Me.新建ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
-        Me.新建ToolStripMenuItem.Text = "新建列表连发（&N）"
-        '
-        '打开ToolStripMenuItem
-        '
-        Me.打开ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.Open_16x
-        Me.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem"
-        Me.打开ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
-        Me.打开ToolStripMenuItem.Text = "打开列表连发（&O）"
-        '
-        '保存ToolStripMenuItem
-        '
-        Me.保存ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.Save_24x
-        Me.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem"
-        Me.保存ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
-        Me.保存ToolStripMenuItem.Text = "保存列表连发（&S）"
         '
         '操作ToolStripMenuItem
         '
@@ -186,60 +167,10 @@ Partial Class Form3
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = Global.keyboardmgr.My.Resources.Resources.Add_16x
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
-        Me.ToolStripButton1.ToolTipText = "在所选项后插入空白行"
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = Global.keyboardmgr.My.Resources.Resources.Delete_16x
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
-        Me.ToolStripButton2.ToolTipText = "删除列"
-        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripButton3
-        '
-        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton3.Image = Global.keyboardmgr.My.Resources.Resources.Save_24x
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton3.Text = "ToolStripButton3"
-        Me.ToolStripButton3.ToolTipText = "保存列表连发"
-        '
-        'ToolStripButton4
-        '
-        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton4.Image = Global.keyboardmgr.My.Resources.Resources.Open_16x
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton4.Text = "ToolStripButton4"
-        Me.ToolStripButton4.ToolTipText = "打开列表连发"
-        '
-        'ToolStripButton5
-        '
-        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton5.Image = Global.keyboardmgr.My.Resources.Resources.AddFile_16x
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton5.Text = "ToolStripButton5"
-        Me.ToolStripButton5.ToolTipText = "新建列表连发"
         '
         'ListBox1
         '
@@ -293,6 +224,83 @@ Partial Class Form3
         Me.SaveFileDialog1.DefaultExt = "lcslst"
         Me.SaveFileDialog1.Filter = "LCS列表连发文件|*.lcslst"
         Me.SaveFileDialog1.Title = "保存列表连发文件"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.DefaultExt = "lcslst"
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.OpenFileDialog1.Filter = "LCS列表连发文件|*.lcslst"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = Global.keyboardmgr.My.Resources.Resources.Add_16x
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.ToolStripButton1.ToolTipText = "在所选项后插入空白行"
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton2.Image = Global.keyboardmgr.My.Resources.Resources.Delete_16x
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton2.Text = "ToolStripButton2"
+        Me.ToolStripButton2.ToolTipText = "删除列"
+        '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton3.Image = Global.keyboardmgr.My.Resources.Resources.Save_24x
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton3.Text = "ToolStripButton3"
+        Me.ToolStripButton3.ToolTipText = "保存列表连发"
+        '
+        'ToolStripButton4
+        '
+        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton4.Image = Global.keyboardmgr.My.Resources.Resources.Open_16x
+        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton4.Name = "ToolStripButton4"
+        Me.ToolStripButton4.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton4.Text = "ToolStripButton4"
+        Me.ToolStripButton4.ToolTipText = "打开列表连发"
+        '
+        'ToolStripButton5
+        '
+        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton5.Image = Global.keyboardmgr.My.Resources.Resources.AddFile_16x
+        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton5.Name = "ToolStripButton5"
+        Me.ToolStripButton5.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton5.Text = "ToolStripButton5"
+        Me.ToolStripButton5.ToolTipText = "新建列表连发"
+        '
+        '新建ToolStripMenuItem
+        '
+        Me.新建ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.AddFile_16x
+        Me.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem"
+        Me.新建ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.新建ToolStripMenuItem.Text = "新建列表连发（&N）"
+        '
+        '打开ToolStripMenuItem
+        '
+        Me.打开ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.Open_16x
+        Me.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem"
+        Me.打开ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.打开ToolStripMenuItem.Text = "打开列表连发（&O）"
+        '
+        '保存ToolStripMenuItem
+        '
+        Me.保存ToolStripMenuItem.Image = Global.keyboardmgr.My.Resources.Resources.Save_24x
+        Me.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem"
+        Me.保存ToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.保存ToolStripMenuItem.Text = "保存列表连发（&S）"
         '
         'Form3
         '
@@ -349,4 +357,6 @@ Partial Class Form3
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents 添加新行AToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class
