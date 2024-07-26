@@ -5,11 +5,13 @@ Imports System.Runtime.InteropServices
 Public Class Form1
     '定义
     Public ThemeColor As Boolean
-    Public color As Color
+    Public usercolor As Color
     Public Shared dodarkmode As Boolean
     Dim hooks As Boolean
     Dim state As String
     Dim i As Integer
+    Public lightmodecolor As Color
+    Public darkmodecolor As Color
     Declare Sub mouse_event Lib "user32" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
     Public Const MOUSEEVENTF_LEFTDOWN = &H2 '模拟鼠标左键按下
     Public Const MOUSEEVENTF_LEFTUP = &H4 '模拟鼠标左键释放
@@ -18,6 +20,7 @@ Public Class Form1
     Private Declare Function GetCursorPos Lib "user32" (ByRef lpPoint As POINTAPI) As Long '全屏坐标声明
     Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
     Dim P As POINTAPI
+    Dim doclose As Integer = False
     '注册热键
     Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Boolean
     Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer) As Boolean
@@ -26,7 +29,7 @@ Public Class Form1
         Public x As Integer '声明坐标变量为32位
         Public y As Integer '声明坐标变量为32位
     End Structure
-    '自动更改主题色，深浅色
+    '转换颜色
     Function ConvertSystemColor(HexColor As String) As Color
         Return Color.FromArgb(Convert.ToInt32(HexColor.Substring(0, 2), 16), Convert.ToInt32(HexColor.Substring(2, 2), 16), Convert.ToInt32(HexColor.Substring(4, 2), 16), Convert.ToInt32(HexColor.Substring(6, 2), 16))
     End Function
@@ -63,50 +66,64 @@ Public Class Form1
             If Settings1.Default.doAutochange = True Then   '还要检测一遍是否跟随系统
                 GetThemeColor()
                 DwmSetWindowAttribute(Handle, DwmWindowAttribute.UseImmersiveDarkMode, ThemeColor, Marshal.SizeOf(Of Integer))
-                color = GetSystemColor()
-                LinkLabel1.LinkColor = color
-                LinkLabel2.LinkColor = color
+                usercolor = GetSystemColor()
+                LinkLabel1.LinkColor = usercolor
+                LinkLabel2.LinkColor = usercolor
             End If
         End If
     End Sub
     Sub darkmode()
-        Panel1.BackColor = Color.DarkCyan
-        For Each TabPages In TabControl1.TabPages
-            TabPages.backcolor = Color.LightSeaGreen
+        For Each TabPages In TabControl1.TabPages 'tabpage设置前景和背景
+            TabPages.backcolor = ColorTranslator.FromHtml("#101010")
+            TabPages.forecolor = Color.White
         Next
-        BackColor = Color.LightSeaGreen
-        TextBox1.BackColor = Color.MediumTurquoise
-        TextBox2.BackColor = Color.MediumTurquoise
-        TextBox3.BackColor = Color.MediumTurquoise
-        Button1.BackColor = Color.MediumTurquoise
-        Button2.BackColor = Color.MediumTurquoise
-        Button3.BackColor = Color.MediumTurquoise
-        Button4.BackColor = Color.MediumTurquoise
-        ComboBox1.BackColor = Color.MediumTurquoise
-        GroupBox1.BackColor = Color.LightSeaGreen
-        GroupBox2.BackColor = Color.LightSeaGreen
-        GroupBox3.BackColor = Color.LightSeaGreen
-        CheckBox1.BackColor = Color.LightSeaGreen
+        BackColor = ColorTranslator.FromHtml("#101010")
+        For i = 0 To Controls.Count - 1
+            If TypeOf Controls(i) Is TextBox Then '如果是文本框控件
+                Controls(i).BackColor = ColorTranslator.FromHtml("#696969")
+            End If
+        Next
+        ComboBox1.BackColor = ColorTranslator.FromHtml("#696969")
+        For i = 0 To Controls.Count - 1
+            If TypeOf Controls(i) Is GroupBox Then '如果是groupbox控件
+                Controls(i).BackColor = ColorTranslator.FromHtml("#101010")
+                Controls(i).ForeColor = Color.White
+            End If
+        Next
+        For i = 0 To Controls.Count - 1
+            If TypeOf Controls(i) Is Button Then '如果是button控件
+                Controls(i).BackColor = ColorTranslator.FromHtml("#696969")
+            End If
+        Next
+        BackColor = ColorTranslator.FromHtml("#101010")
+        ForeColor = Color.WhiteSmoke
         dodarkmode = True
     End Sub
     Sub lightmode()
-        Panel1.BackColor = Color.DeepSkyBlue
-        For Each TabPages In TabControl1.TabPages
-            TabPages.backcolor = Color.LightCyan
+        For Each TabPages In TabControl1.TabPages 'tabpage设置前景和背景
+            TabPages.backcolor = Color.WhiteSmoke
+            TabPages.forecolor = Color.Black
         Next
-        BackColor = Color.LightCyan
-        TextBox1.BackColor = Color.PaleTurquoise
-        TextBox2.BackColor = Color.PaleTurquoise
-        TextBox3.BackColor = Color.PaleTurquoise
-        Button1.BackColor = Color.PaleTurquoise
-        Button2.BackColor = Color.PaleTurquoise
-        Button3.BackColor = Color.PaleTurquoise
-        Button4.BackColor = Color.PaleTurquoise
-        ComboBox1.BackColor = Color.PaleTurquoise
-        GroupBox1.BackColor = Color.LightCyan
-        GroupBox2.BackColor = Color.LightCyan
-        GroupBox3.BackColor = Color.LightCyan
-        CheckBox1.BackColor = Color.LightCyan
+        BackColor = Color.WhiteSmoke
+        For i = 0 To Controls.Count - 1
+            If TypeOf Controls(i) Is TextBox Then '如果是Windows文本框控件
+                Controls(i).BackColor = ColorTranslator.FromHtml("#F0F0F0")
+            End If
+        Next
+        ComboBox1.BackColor = ColorTranslator.FromHtml("#F0F0F0")
+        For i = 0 To Controls.Count - 1
+            If TypeOf Controls(i) Is GroupBox Then '如果是groupbox控件
+                Controls(i).BackColor = Color.WhiteSmoke
+                Controls(i).ForeColor = Color.Black
+            End If
+        Next
+        For i = 0 To Controls.Count - 1
+            If TypeOf Controls(i) Is Button Then '如果是button控件
+                Controls(i).BackColor = ColorTranslator.FromHtml("#F0F0F0")
+            End If
+        Next
+        BackColor = Color.WhiteSmoke
+        ForeColor = Color.Black
         dodarkmode = False
     End Sub
     Protected Overrides Sub WndProc(ByRef m As Message) '注册热键
@@ -117,13 +134,11 @@ Public Class Form1
         MyBase.WndProc(m)
     End Sub
     '窗体load事件
-
-
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Visible = False
         NumericUpDown1.Value = Settings1.Default.clicktime
         NumericUpDown2.Value = Settings1.Default.sendtime
-        '检测是否设置了“跟随系统”以及设置radiobutton状态、深浅色模式
+        '检测是否设置了“跟随系统”以及设置radiobutton状态、深浅色模式等
         If Settings1.Default.doAutochange = True Then
             GetThemeColor()
             RadioButton5.Checked = True
@@ -149,57 +164,42 @@ Public Class Form1
                 TabControl1.SelectedTab = TabPage0
                 ComboBox1.Text = "欢迎"
         End Select
-        Text = Settings1.Default.title
-        TextBox3.Text = Text
-        Label4.Text = Text
+        If Settings1.Default.doforceclose = True Then
+            CheckBox1.Checked = True
+        Else
+            CheckBox1.Checked = False
+        End If
+        '设置标题
+        Dim title As String = Settings1.Default.title
+
+        Text = title
+        TextBox3.Text = title
+
         RegisterHotKey(Handle, 0, 0, Keys.F4)
         '关闭没做完的功能
-
-        GroupBox2.Visible = False
-        GroupBox4.Visible = False
-
+        If Settings1.Default.doopendevelopingfeatures = False Then
+            RadioButton4.Visible = False
+            RadioButton5.Visible = False
+            GroupBox4.Visible = False
+            Button3.Visible = False
+        End If
+        Visible = True
+        version.Text = "版本号：" & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
     End Sub
-
-    '标题栏
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        If Settings1.Default.doforceclose = True Then
+    '窗体closing事件
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Settings1.Default.doforceclose = False Then
+            If doclose = False Then
+                e.Cancel = True
+                Hide()
+            Else
+                Application.Exit()
+            End If
+        Else
             Application.Exit()
-        Else
-            Hide() '隐藏窗体
         End If
     End Sub
 
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-        WindowState = FormWindowState.Minimized
-    End Sub
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-        If TopMost = False Then
-            TopMost = True
-            Label3.Text = "|解除"
-        Else
-            TopMost = False
-            Label3.Text = "|置顶"
-
-        End If
-
-    End Sub
-    '窗体移动
-    Declare Auto Function ReleaseCapture Lib "user32.dll" Alias "ReleaseCapture" () As Boolean
-    'API ReleaseCapture函数是用来释放鼠标捕获的
-    Declare Auto Function SendMessage Lib "user32.dll" Alias "SendMessage" (ByVal hWnd As IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As IntPtr
-    '向windows发送消息
-    Public Const WM_SYSCOMMAND As Integer = &H112&
-    Public Const SC_MOVE As Integer = &HF010&
-    Public Const HTCAPTION As Integer = &H2&
-
-    Private Sub Form1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove
-        If e.Button = MouseButtons.Left Then
-            ReleaseCapture()
-            SendMessage(Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0)
-        End If
-
-
-    End Sub
     '网站
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://481652.github.io/")
@@ -254,13 +254,12 @@ Public Class Form1
 
     Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
         Settings1.Default.doAutochange = True
-        Settings1.Default.Save()
     End Sub
     <DllImport("dwmapi.dll", PreserveSig:=True)>
     Public Shared Function DwmSetWindowAttribute(ByVal hwnd As IntPtr, ByVal attr As DwmWindowAttribute, ByRef attrValue As Integer, ByVal attrSize As Integer) As Integer
 
     End Function
-    Public Enum DwmWindowAttribute
+    Public Enum DwmWindowAttribute '枚举窗口属性
         NCRenderingEnabled = 1
         NCRenderingPolicy
         TransitionsForceDisabled
@@ -291,14 +290,12 @@ Public Class Form1
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
         Settings1.Default.doAutochange = False
         Settings1.Default.dodarkmode = False
-        Settings1.Default.Save()
         lightmode()
     End Sub
 
     Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
         Settings1.Default.doAutochange = False
         Settings1.Default.dodarkmode = True
-        Settings1.Default.Save()
         darkmode()
     End Sub
 
@@ -314,10 +311,8 @@ Public Class Form1
             Case Else
                 Settings1.Default.startpage = 1
         End Select
-        Settings1.Default.Save()
     End Sub
     '连发
-
     Sub CreateClipBoard(ByVal CopyText As String)
         Clipboard.Clear()
         Clipboard.SetText(CopyText)
@@ -331,18 +326,13 @@ Public Class Form1
         Settings1.Default.Save()
         Form2.Show()
     End Sub
-
+#Disable Warning BC42025
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
         Dim sk As SendKeys
-#Disable Warning BC42025
         sk.Send("^v")
-#Enable Warning BC42025
-#Disable Warning BC42025
         sk.Send("{Enter}")
-#Enable Warning BC42025
-
     End Sub
-
+#Enable Warning BC42025
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Form3.Show()
     End Sub
@@ -360,14 +350,9 @@ Public Class Form1
         Settings1.Default.Save()
     End Sub
 
-    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
-        Text = TextBox3.Text
-        Label4.Text = TextBox3.Text
-        Settings1.Default.title = TextBox3.Text
-        Settings1.Default.Save()
-    End Sub
 
     Private Sub ToolStripMenuItem4_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem4.Click
+        doclose = True
         Application.Exit()
     End Sub
 
@@ -395,5 +380,16 @@ Public Class Form1
         Activate()
     End Sub
 
+    Private Sub 图片连发ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 图片连发ToolStripMenuItem.Click
+        Form4.Show()
 
+    End Sub
+    '保存设置
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        '标题
+        Settings1.Default.title = TextBox3.Text
+        Text = TextBox3.Text
+
+        Settings1.Default.Save()
+    End Sub
 End Class

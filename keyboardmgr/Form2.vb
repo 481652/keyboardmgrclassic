@@ -11,12 +11,12 @@
         '第3个参数意义： 0=nothing 1 -alt 2-ctrl 3-ctrl+alt 4-shift 5-alt+shift 6-ctrl+shift 7-ctrl+shift+alt
         '深浅色模式
         If Form1.dodarkmode = True Then
-            BackColor = Color.DarkCyan
-            Label1.BackColor = Color.DarkCyan
+            BackColor = ColorTranslator.FromHtml("#101010")
+            Label1.BackColor = ColorTranslator.FromHtml("#101010")
             Label1.ForeColor = Color.WhiteSmoke
         Else
-            BackColor = Color.LightCyan
-            Label1.BackColor = Color.LightCyan
+            BackColor = Color.WhiteSmoke
+            Label1.BackColor = Color.WhiteSmoke
             Label1.ForeColor = Color.Black
         End If
     End Sub
@@ -36,7 +36,11 @@
         Form1.Timer2.Enabled = False
         Form1.Timer3.Enabled = False
         Form4.Timer.Enabled = False
-        Form1.Focus()
+        Form4.Label3.Enabled = True
+        Form4.NumericUpDown.Enabled = True
+        Form4.Label4.Enabled = True
+        Form4.LinkLabel1.Enabled = True
+        Form4.Button1.Enabled = True
         Close()
     End Sub
 End Class

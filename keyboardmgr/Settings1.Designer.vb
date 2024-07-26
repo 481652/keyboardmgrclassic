@@ -121,4 +121,16 @@ Partial Friend NotInheritable Class Settings1
             Me("imgsendtime") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+    Public Property doopendevelopingfeatures() As Boolean
+        Get
+            Return CType(Me("doopendevelopingfeatures"),Boolean)
+        End Get
+        Set
+            Me("doopendevelopingfeatures") = value
+        End Set
+    End Property
 End Class

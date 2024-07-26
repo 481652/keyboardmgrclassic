@@ -11,7 +11,7 @@
     End Sub
 
     Private Sub exp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LinkLabel1.LinkColor = Form1.color
+        LinkLabel1.LinkColor = Form1.usercolor
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked

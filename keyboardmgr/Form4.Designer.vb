@@ -43,20 +43,19 @@ Partial Class Form4
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(32, 40)
+        Me.Label1.Location = New System.Drawing.Point(80, 40)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(330, 21)
+        Me.Label1.Size = New System.Drawing.Size(218, 21)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "拖动文件至此或点击下方浏览按钮以添加图片"
+        Me.Label1.Text = "点击下方浏览按钮以添加图片"
         '
         'Button2
         '
-        Me.Button2.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button2.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue
         Me.Button2.FlatAppearance.BorderSize = 2
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleTurquoise
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button2.Location = New System.Drawing.Point(136, 88)
         Me.Button2.Name = "Button2"
@@ -70,18 +69,17 @@ Partial Class Form4
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(112, 64)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(152, 17)
+        Me.Label2.Size = New System.Drawing.Size(164, 17)
         Me.Label2.TabIndex = 6
-        Me.Label2.Text = "（目前暂时只支持单图片）"
+        Me.Label2.Text = "（目前暂时只支持单张图片）"
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.Button1.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.SkyBlue
         Me.Button1.FlatAppearance.BorderSize = 2
         Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PaleTurquoise
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleTurquoise
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Button1.Location = New System.Drawing.Point(288, 200)
         Me.Button1.Name = "Button1"
@@ -101,13 +99,13 @@ Partial Class Form4
         '
         'NumericUpDown
         '
-        Me.NumericUpDown.BackColor = System.Drawing.Color.LightCyan
+        Me.NumericUpDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.NumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.NumericUpDown.Location = New System.Drawing.Point(128, 216)
-        Me.NumericUpDown.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDown.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
         Me.NumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown.Name = "NumericUpDown"
-        Me.NumericUpDown.Size = New System.Drawing.Size(48, 19)
+        Me.NumericUpDown.Size = New System.Drawing.Size(64, 19)
         Me.NumericUpDown.TabIndex = 9
         Me.NumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.NumericUpDown.Value = New Decimal(New Integer() {10, 0, 0, 0})
@@ -115,7 +113,7 @@ Partial Class Form4
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(184, 216)
+        Me.Label4.Location = New System.Drawing.Point(192, 216)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(32, 17)
         Me.Label4.TabIndex = 10
@@ -140,7 +138,7 @@ Partial Class Form4
         '
         Me.OpenFileDialog1.DefaultExt = "jpg"
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        Me.OpenFileDialog1.Filter = "图片文件|*.jpg *.jpeg *.png *.gif"
+        Me.OpenFileDialog1.Filter = "图片文件|*.jpg;*.jpeg;*.png;*.gif"
         Me.OpenFileDialog1.Title = "选择一张图片"
         '
         'PictureBox1
@@ -158,7 +156,7 @@ Partial Class Form4
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.LightCyan
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(399, 250)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)

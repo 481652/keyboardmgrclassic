@@ -9,9 +9,9 @@ Imports System.Runtime.InteropServices
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("键鼠管家")>
-<Assembly: AssemblyDescription("一个开源小巧的连点连发工具，即将支持列表连发等功能")>
+<Assembly: AssemblyDescription("一个开源小巧的连点连发工具")>
 <Assembly: AssemblyCompany("LCS")>
-<Assembly: AssemblyProduct("keyboardmgr")>
+<Assembly: AssemblyProduct("键鼠管家")>
 <Assembly: AssemblyCopyright("LCS")>
 <Assembly: AssemblyTrademark("LCS")>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.0.0.2")>
+<Assembly: AssemblyFileVersion("1.0.0.2")>
