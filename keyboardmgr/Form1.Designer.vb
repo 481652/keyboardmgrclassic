@@ -55,6 +55,7 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -78,6 +79,7 @@ Partial Class Form1
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.图片连发ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -457,6 +459,7 @@ Partial Class Form1
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
+        Me.TabPage3.Controls.Add(Me.CheckBox2)
         Me.TabPage3.Controls.Add(Me.Button7)
         Me.TabPage3.Controls.Add(Me.TextBox3)
         Me.TabPage3.Controls.Add(Me.Label16)
@@ -473,6 +476,16 @@ Partial Class Form1
         Me.TabPage3.Size = New System.Drawing.Size(344, 346)
         Me.TabPage3.TabIndex = 3
         Me.TabPage3.Text = "选项"
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(16, 232)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(183, 21)
+        Me.CheckBox2.TabIndex = 11
+        Me.CheckBox2.Text = "随系统启动（仅限当前用户）"
+        Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'Button7
         '
@@ -750,4 +763,6 @@ Partial Class Form1
     Friend WithEvents version As Label
     Friend WithEvents 图片连发ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Button7 As Button
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents PageSetupDialog1 As PageSetupDialog
 End Class

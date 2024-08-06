@@ -134,6 +134,7 @@
 (注意：LCS网站在部分地区被墙）
 一个开源小巧的连点连发工具，即将支持更多功能
 What's new:
+1.0.0.3 现在可以在程序内设置开机自启
 1.0.0.2 修复了一些bug，新增了“图片连发”功能,优化了渲染性能
 1.0.0.1 外观修改,修复了一些bug
 (注：由于深色模式bug太多，暂时关闭深色模式，
@@ -503,6 +504,9 @@ doopendevelopingfeatures，设置为true，就会
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
+  <metadata name="PageSetupDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>779, 18</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAEAIABgQgAAFgAAACgAAABAAAAAgAAAAAEAIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA

@@ -21,6 +21,7 @@ Public Class Form1
     Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
     Dim P As POINTAPI
     Dim doclose As Integer = False
+    Dim startup As Boolean
     '注册热键
     Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Boolean
     Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer) As Boolean
@@ -185,6 +186,11 @@ Public Class Form1
         End If
         Visible = True
         version.Text = "版本号：" & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
+        If Settings1.Default.dostartup = True Then
+            startup = True
+        Else
+            startup = False
+        End If
     End Sub
     '窗体closing事件
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -347,7 +353,7 @@ Public Class Form1
         Else
             Settings1.Default.doforceclose = False
         End If
-        Settings1.Default.Save()
+
     End Sub
 
 
@@ -391,5 +397,39 @@ Public Class Form1
         Text = TextBox3.Text
 
         Settings1.Default.Save()
+        '检查是否设置开机自启，并置开机自启
+        Try
+            Dim appPath As String = Application.ExecutablePath
+            Dim keyPath As String = "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
+            Dim rk As RegistryKey = Nothing
+            rk = Registry.CurrentUser.OpenSubKey(keyPath, True)
+            If startup = True Then
+                If rk Is Nothing Then
+                    rk = Registry.CurrentUser.CreateSubKey(keyPath)
+                End If
+                rk.SetValue("keyboardmgr", Chr(34) & appPath & Chr(34))
+                rk.Close()
+            Else
+                If rk Is Nothing Then
+                    rk = Registry.CurrentUser.CreateSubKey(keyPath)
+                End If
+                If rk.GetValue("keyboardmgr") IsNot Nothing Then
+                    rk.DeleteValue("keyboardmgr")
+                End If
+            End If
+        Catch ex As Exception
+            showexpdlg("设置程序随系统启动错误，可能是因为权限问题或被杀软拦截。", ex.ToString)
+        End Try
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If CheckBox2.Checked = True Then
+            Settings1.Default.dostartup = True
+            startup = True
+        Else
+            Settings1.Default.dostartup = False
+            startup = False
+        End If
+
     End Sub
 End Class
