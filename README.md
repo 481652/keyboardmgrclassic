@@ -1,4 +1,4 @@
-# <center> 键鼠管家
+# <center> 键鼠管家 </center>
 <center>一个小巧实用的图形化连点连发工具</center>
 ## 下载
 已编译最新版下载链接：https://lrbcodestudio.lanzoue.com/b004hnnj7a 密码:a58n
