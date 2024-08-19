@@ -175,6 +175,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings1.vb" />
     <Compile Include="warn.Designer.vb">
       <DependentUpon>warn.vb</DependentUpon>
     </Compile>

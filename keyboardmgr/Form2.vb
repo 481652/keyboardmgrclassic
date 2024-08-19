@@ -41,6 +41,8 @@
         Form4.Label4.Enabled = True
         Form4.LinkLabel1.Enabled = True
         Form4.Button1.Enabled = True
+        Form3.Timer.Enabled = False
+        Form3.Enabled = True
         Close()
     End Sub
 End Class

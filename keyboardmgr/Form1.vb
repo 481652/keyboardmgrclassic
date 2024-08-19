@@ -22,10 +22,10 @@ Public Class Form1
     Dim P As POINTAPI
     Dim doclose As Integer = False
     Dim startup As Boolean
+    Dim dotop As Boolean = False
     '注册热键
     Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Boolean
     Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer) As Boolean
-
     Private Structure POINTAPI '声明坐标变量
         Public x As Integer '声明坐标变量为32位
         Public y As Integer '声明坐标变量为32位
@@ -182,7 +182,11 @@ Public Class Form1
             RadioButton4.Visible = False
             RadioButton5.Visible = False
             GroupBox4.Visible = False
-            Button3.Visible = False
+            '列表连发的保存功能暂时关闭
+            Form3.ToolStripMenuItem.Visible = False
+            Form3.ToolStripButton3.Visible = False
+            Form3.ToolStripButton4.Visible = False
+            Form3.ToolStripButton5.Visible = False
         End If
         Visible = True
         version.Text = "版本号：" & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
@@ -191,6 +195,9 @@ Public Class Form1
         Else
             startup = False
         End If
+
+
+
     End Sub
     '窗体closing事件
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -431,5 +438,21 @@ Public Class Form1
             startup = False
         End If
 
+    End Sub
+    '设置置顶
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        If dotop = False Then
+            TopMost = True
+            dotop = True
+            Label1.Text = "取消置顶"
+        Else
+            TopMost = False
+            dotop = False
+            Label1.Text = "点我置顶"
+        End If
+    End Sub
+
+    Private Sub 列表连发ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列表连发ToolStripMenuItem.Click
+        Form3.Show()
     End Sub
 End Class

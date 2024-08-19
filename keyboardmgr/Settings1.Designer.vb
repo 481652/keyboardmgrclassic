@@ -145,4 +145,16 @@ Partial Friend NotInheritable Class Settings1
             Me("dostartup") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("1000")>  _
+    Public Property listsendtime() As Decimal
+        Get
+            Return CType(Me("listsendtime"),Decimal)
+        End Get
+        Set
+            Me("listsendtime") = value
+        End Set
+    End Property
 End Class

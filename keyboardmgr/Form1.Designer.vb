@@ -80,6 +80,8 @@ Partial Class Form1
         Me.图片连发ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.列表连发ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -640,9 +642,9 @@ Partial Class Form1
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.图片连发ToolStripMenuItem, Me.ToolStripMenuItem4})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.图片连发ToolStripMenuItem, Me.列表连发ToolStripMenuItem, Me.ToolStripMenuItem4})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 114)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 158)
         '
         'ToolStripMenuItem1
         '
@@ -675,12 +677,28 @@ Partial Class Form1
         Me.ToolStripMenuItem4.Size = New System.Drawing.Size(174, 22)
         Me.ToolStripMenuItem4.Text = "退出程序"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(304, 8)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(56, 17)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "点我置顶"
+        '
+        '列表连发ToolStripMenuItem
+        '
+        Me.列表连发ToolStripMenuItem.Name = "列表连发ToolStripMenuItem"
+        Me.列表连发ToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.列表连发ToolStripMenuItem.Text = "列表连发"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(368, 393)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -706,6 +724,7 @@ Partial Class Form1
         Me.TabPage3.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -765,4 +784,6 @@ Partial Class Form1
     Friend WithEvents Button7 As Button
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
+    Friend WithEvents Label1 As Label
+    Friend WithEvents 列表连发ToolStripMenuItem As ToolStripMenuItem
 End Class
