@@ -12,20 +12,20 @@ Public Class Form1
     Dim i As Integer
     Public lightmodecolor As Color
     Public darkmodecolor As Color
-    Declare Sub mouse_event Lib "user32" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
+    Declare Sub mouse_event Lib "user32" (dwFlags As Long, dx As Long, dy As Long, cButtons As Long, dwExtraInfo As Long)
     Public Const MOUSEEVENTF_LEFTDOWN = &H2 '模拟鼠标左键按下
     Public Const MOUSEEVENTF_LEFTUP = &H4 '模拟鼠标左键释放
     Public Const MOUSEEVENTF_RIGHTDOWN = &H8 '模拟鼠标右键按下
     Public Const MOUSEEVENTF_RIGHTUP = &H10 '模拟鼠标右键释放
     Private Declare Function GetCursorPos Lib "user32" (ByRef lpPoint As POINTAPI) As Long '全屏坐标声明
-    Private Declare Function ScreenToClient Lib "user32.dll" (ByVal hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
+    Private Declare Function ScreenToClient Lib "user32.dll" (hwnd As Integer, ByRef lpPoint As POINTAPI) As Integer '窗口坐标声明
     Dim P As POINTAPI
     Dim doclose As Integer = False
     Dim startup As Boolean
     Dim dotop As Boolean = False
     '注册热键
-    Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Boolean
-    Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer) As Boolean
+    Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (hwnd As IntPtr, id As Integer, fsModifiers As Integer, vk As Integer) As Boolean
+    Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (hwnd As IntPtr, id As Integer) As Boolean
     Private Structure POINTAPI '声明坐标变量
         Public x As Integer '声明坐标变量为32位
         Public y As Integer '声明坐标变量为32位
@@ -269,7 +269,7 @@ Public Class Form1
         Settings1.Default.doAutochange = True
     End Sub
     <DllImport("dwmapi.dll", PreserveSig:=True)>
-    Public Shared Function DwmSetWindowAttribute(ByVal hwnd As IntPtr, ByVal attr As DwmWindowAttribute, ByRef attrValue As Integer, ByVal attrSize As Integer) As Integer
+    Public Shared Function DwmSetWindowAttribute(hwnd As IntPtr, attr As DwmWindowAttribute, ByRef attrValue As Integer, attrSize As Integer) As Integer
 
     End Function
     Public Enum DwmWindowAttribute '枚举窗口属性
@@ -326,7 +326,7 @@ Public Class Form1
         End Select
     End Sub
     '连发
-    Sub CreateClipBoard(ByVal CopyText As String)
+    Sub CreateClipBoard(CopyText As String)
         Clipboard.Clear()
         Clipboard.SetText(CopyText)
     End Sub

@@ -2,16 +2,16 @@
 Module MouseHooker
 
     <DllImport("User32.dll", CharSet:=CharSet.Auto, CallingConvention:=CallingConvention.StdCall)>
-        Public Function SetWindowsHookEx(ByVal idHook As Integer, ByVal HookProc As KeyHook, ByVal hInstance As IntPtr, ByVal wParam As Integer) As Integer
+        Public Function SetWindowsHookEx(idHook As Integer, HookProc As KeyHook, hInstance As IntPtr, wParam As Integer) As Integer
         End Function
         <DllImport("User32.dll", CharSet:=CharSet.Auto, CallingConvention:=CallingConvention.StdCall)>
-        Public Function CallNextHookEx(ByVal idHook As Integer, ByVal nCode As Integer, ByVal wParam As Integer, ByVal lParam As IntPtr) As Integer
+        Public Function CallNextHookEx(idHook As Integer, nCode As Integer, wParam As Integer, lParam As IntPtr) As Integer
         End Function
         <DllImport("User32.dll", CharSet:=CharSet.Auto, CallingConvention:=CallingConvention.StdCall)>
-        Public Function UnhookWindowsHookEx(ByVal idHook As Integer) As Boolean
+        Public Function UnhookWindowsHookEx(idHook As Integer) As Boolean
         End Function
         <DllImport("kernel32.dll", CharSet:=CharSet.Auto, CallingConvention:=CallingConvention.StdCall)>
-        Public Function GetModuleHandle(ByVal name As String) As IntPtr
+        Public Function GetModuleHandle(name As String) As IntPtr
         End Function
 
         <StructLayout(LayoutKind.Sequential)>
@@ -26,7 +26,7 @@ Module MouseHooker
 
         Public Const WH_KEYBOARD_LL As Integer = 13
 
-        Public Delegate Function KeyHook(ByVal Code As Integer, ByVal wParam As Integer, ByVal lParam As IntPtr) As Integer
+        Public Delegate Function KeyHook(Code As Integer, wParam As Integer, lParam As IntPtr) As Integer
 
         '<MarshalAs(UnmanagedType.FunctionPtr)>
         Public callback As KeyHook

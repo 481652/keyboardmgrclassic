@@ -1,11 +1,11 @@
 ﻿Public Class exp
 
-    Private Sub OK_Button_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles OK_Button.Click
+    Private Sub OK_Button_Click(sender As Object, e As System.EventArgs) Handles OK_Button.Click
         DialogResult = DialogResult.OK
         Form1.Show()
         Close()
     End Sub
-    Private Sub Practise_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub Practise_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
 
     End Sub

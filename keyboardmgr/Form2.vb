@@ -1,6 +1,6 @@
 ﻿Public Class Form2
-    Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer, ByVal fsModifiers As Integer, ByVal vk As Integer) As Boolean
-    Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (ByVal hwnd As IntPtr, ByVal id As Integer) As Boolean
+    Public Declare Auto Function RegisterHotKey Lib "user32.dll" Alias "RegisterHotKey" (hwnd As IntPtr, id As Integer, fsModifiers As Integer, vk As Integer) As Boolean
+    Public Declare Auto Function UnRegisterHotKey Lib "user32.dll" Alias "UnregisterHotKey" (hwnd As IntPtr, id As Integer) As Boolean
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
         Call stoptasks()
@@ -20,7 +20,7 @@
             Label1.ForeColor = Color.Black
         End If
     End Sub
-    Private Sub Form1_Closed(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Closed
+    Private Sub Form1_Closed(sender As Object, e As System.EventArgs) Handles MyBase.Closed
         UnRegisterHotKey(Handle, 0)
     End Sub
     Protected Overrides Sub WndProc(ByRef m As Message)
