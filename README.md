@@ -4,6 +4,7 @@
 ## 下载  
 已编译最新版下载链接：https://lrbcodestudio.lanzoue.com/b004hnnj7a 密码:a58n  
 建议前往q群146732405下载，更新更及时  
+解决方案请使用Visual Studio 2022打开
 
 ## 功能  
 连点、文字连发、图片连发  
