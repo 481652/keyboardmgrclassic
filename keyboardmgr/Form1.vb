@@ -51,9 +51,9 @@ Public Class Form1
             Dim appsUseLightTheme As Integer = key.GetValue("AppsUseLightTheme", -1)
 
             If appsUseLightTheme = 0 Then   '系统为深色模式
-                darkmode()
+                Darkmode()
             ElseIf appsUseLightTheme = 1 Then  '系统为浅色模式
-                lightmode()
+                Lightmode()
             Else
 
             End If
@@ -73,7 +73,7 @@ Public Class Form1
             End If
         End If
     End Sub
-    Sub darkmode()
+    Sub Darkmode()
         For Each TabPages In TabControl1.TabPages 'tabpage设置前景和背景
             TabPages.backcolor = ColorTranslator.FromHtml("#101010")
             TabPages.forecolor = Color.White
@@ -100,7 +100,7 @@ Public Class Form1
         ForeColor = Color.WhiteSmoke
         dodarkmode = True
     End Sub
-    Sub lightmode()
+    Sub Lightmode()
         For Each TabPages In TabControl1.TabPages 'tabpage设置前景和背景
             TabPages.backcolor = Color.WhiteSmoke
             TabPages.forecolor = Color.Black
@@ -145,10 +145,10 @@ Public Class Form1
             RadioButton5.Checked = True
             AddHandler SystemEvents.UserPreferenceChanged, AddressOf ChangeTheme
         ElseIf Settings1.Default.dodarkmode = True Then
-            darkmode()
+            Darkmode()
             RadioButton4.Checked = True
         Else
-            lightmode()
+            Lightmode()
             RadioButton3.Checked = True
         End If
         Select Case Settings1.Default.startpage
@@ -303,13 +303,13 @@ Public Class Form1
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
         Settings1.Default.doAutochange = False
         Settings1.Default.dodarkmode = False
-        lightmode()
+        Lightmode()
     End Sub
 
     Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
         Settings1.Default.doAutochange = False
         Settings1.Default.dodarkmode = True
-        darkmode()
+        Darkmode()
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged

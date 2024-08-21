@@ -35,6 +35,8 @@ Partial Class Form4
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,11 +45,11 @@ Partial Class Form4
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label1.Location = New System.Drawing.Point(80, 40)
+        Me.Label1.Location = New System.Drawing.Point(22, 43)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(218, 21)
+        Me.Label1.Size = New System.Drawing.Size(346, 21)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "点击下方浏览按钮以添加图片"
+        Me.Label1.Text = "点击下方浏览按钮或将图片拖拽至此以添加图片"
         '
         'Button2
         '
@@ -137,8 +139,7 @@ Partial Class Form4
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.DefaultExt = "jpg"
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        Me.OpenFileDialog1.Filter = "图片文件|*.jpg;*.jpeg;*.png;*.gif"
+        Me.OpenFileDialog1.Filter = "支持的图片文件|*.jpg;*.jpeg;*.png;*.gif;*.bmp;*.ico"
         Me.OpenFileDialog1.Title = "选择一张图片"
         '
         'PictureBox1
@@ -151,6 +152,25 @@ Partial Class Form4
         Me.PictureBox1.TabStop = False
         Me.PictureBox1.Visible = False
         '
+        'Label5
+        '
+        Me.Label5.AllowDrop = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(336, 9)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(56, 17)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "点我置顶"
+        '
+        'ToolTip1
+        '
+        Me.ToolTip1.AutoPopDelay = 1000
+        Me.ToolTip1.InitialDelay = 500
+        Me.ToolTip1.IsBalloon = True
+        Me.ToolTip1.ReshowDelay = 0
+        Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.[Error]
+        Me.ToolTip1.ToolTipTitle = "错误"
+        '
         'Form4
         '
         Me.AllowDrop = True
@@ -158,6 +178,7 @@ Partial Class Form4
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(399, 250)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.NumericUpDown)
@@ -191,4 +212,6 @@ Partial Class Form4
     Friend WithEvents Timer As Timer
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

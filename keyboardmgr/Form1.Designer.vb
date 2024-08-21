@@ -78,10 +78,10 @@ Partial Class Form1
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.图片连发ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.列表连发ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.列表连发ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -608,7 +608,6 @@ Partial Class Form1
         'ToolTip1
         '
         Me.ToolTip1.AutoPopDelay = 1000
-        Me.ToolTip1.BackColor = System.Drawing.Color.LightCyan
         Me.ToolTip1.InitialDelay = 500
         Me.ToolTip1.IsBalloon = True
         Me.ToolTip1.ReshowDelay = 0
@@ -644,7 +643,7 @@ Partial Class Form1
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.图片连发ToolStripMenuItem, Me.列表连发ToolStripMenuItem, Me.ToolStripMenuItem4})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 158)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(175, 136)
         '
         'ToolStripMenuItem1
         '
@@ -671,6 +670,12 @@ Partial Class Form1
         Me.图片连发ToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
         Me.图片连发ToolStripMenuItem.Text = "图片连发"
         '
+        '列表连发ToolStripMenuItem
+        '
+        Me.列表连发ToolStripMenuItem.Name = "列表连发ToolStripMenuItem"
+        Me.列表连发ToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.列表连发ToolStripMenuItem.Text = "列表连发"
+        '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
@@ -685,12 +690,6 @@ Partial Class Form1
         Me.Label1.Size = New System.Drawing.Size(56, 17)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "点我置顶"
-        '
-        '列表连发ToolStripMenuItem
-        '
-        Me.列表连发ToolStripMenuItem.Name = "列表连发ToolStripMenuItem"
-        Me.列表连发ToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
-        Me.列表连发ToolStripMenuItem.Text = "列表连发"
         '
         'Form1
         '

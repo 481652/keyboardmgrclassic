@@ -1,7 +1,7 @@
 ﻿
 Public Class Form4
     Public image As Image
-
+    Dim dotop As Boolean = False
 
     '发送
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -60,6 +60,46 @@ Public Class Form4
 #Disable Warning BC42025
         sk.Send("{Enter}")
 #Enable Warning BC42025
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+        If dotop = False Then
+            TopMost = True
+            dotop = True
+            Label5.Text = "取消置顶"
+        Else
+            TopMost = False
+            dotop = False
+            Label5.Text = "点我置顶"
+        End If
+    End Sub
+    '检查拖放
+    Private Sub Form4_DragEnter(sender As Object, e As DragEventArgs) Handles MyBase.DragEnter
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.Copy
+        End If
+    End Sub
+    '拖放添加图片
+    Private Sub Form4_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
+        ' 获取拖放的文件列表
+        Try
+            '确保只取一个图片
+            Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+            If files.Length > 0 Then
+                image = Image.FromFile(files(0))
+            End If
+        Catch ex As Exception
+            ToolTip1.Show("拖放的图片无效！", Label1)
+            Return
+        End Try
+        PictureBox1.Image = image
+        PictureBox1.Visible = True
+        Label1.Visible = False
+        Label2.Visible = False
+        Button2.Visible = False
+        PictureBox1.Image = image
+        LinkLabel1.Visible = True
+        Button1.Visible = True
     End Sub
 
 
