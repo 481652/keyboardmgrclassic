@@ -152,34 +152,47 @@ Public Class Form3
     Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         'todo
     End Sub
-
+    'fix：处理空列表引发异常
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Settings1.Default.listsendtime = NumericUpDown.Value
-        Settings1.Default.Save()
-        Timer.Interval = NumericUpDown.Value
-        Timer.Enabled = True
-        Form2.Show()
-        Enabled = False
-        ListBox1.SelectedIndex = 0
+        Try
+            Settings1.Default.listsendtime = NumericUpDown.Value
+            Settings1.Default.Save()
+            Timer.Interval = NumericUpDown.Value
+            Timer.Enabled = True
+            Form2.Show()
+            Enabled = False
+            ListBox1.SelectedIndex = 0
+        Catch ex As Exception
+            ToolTip1.SetToolTip(Button2, "处理列表时遇到问题。请检查是否使用了空列表！")
+            Return
+        End Try
     End Sub
 #Disable Warning BC42025
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
-        Dim sendstring As String
-        If ListBox1.SelectedIndex < ListBox1.Items.Count - 1 Then
-            ListBox1.SelectedIndex += 1
-        ElseIf dosendonce = False Then
-            ListBox1.SelectedIndex = 0
-        Else
+        Try
+            Dim sendstring As String
+            If ListBox1.SelectedIndex < ListBox1.Items.Count - 1 Then
+                ListBox1.SelectedIndex += 1
+            ElseIf dosendonce = False Then
+                ListBox1.SelectedIndex = 0
+            Else
+                Enabled = True
+                Timer.Enabled = False
+                Form2.Close()
+            End If
+            sendstring = ListBox1.GetItemText(ListBox1.SelectedItem)
+            Dim sk As SendKeys
+            Clipboard.Clear()
+            Clipboard.SetText(sendstring)
+            sk.Send("^v")
+            sk.Send("{Enter}")
+        Catch ex As Exception
+            ToolTip1.SetToolTip(Button2, "处理列表时遇到问题。请检查是否使用了空列表！")
             Enabled = True
             Timer.Enabled = False
             Form2.Close()
-        End If
-        sendstring = ListBox1.GetItemText(ListBox1.SelectedItem)
-        Dim sk As SendKeys
-        Clipboard.Clear()
-        Clipboard.SetText(sendstring)
-        sk.Send("^v")
-        sk.Send("{Enter}")
+            Return
+        End Try
     End Sub
 #Enable Warning BC42025
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged

@@ -331,13 +331,19 @@ Public Class Form1
         Clipboard.SetText(CopyText)
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        CreateClipBoard(TextBox2.Text)
+        If TextBox2.Text IsNot "" Then  'fix:检测文本框内容是否为空
+            CreateClipBoard(TextBox2.Text)
+        Else
+            ToolTip1.SetToolTip(Button2, "连发内容不能为空")
+            Return
+        End If
         Timer3.Enabled = True
         Timer3.Interval = NumericUpDown2.Value
         TabControl1.Enabled = False
         Settings1.Default.sendtime = NumericUpDown2.Value
         Settings1.Default.Save()
         Form2.Show()
+
     End Sub
 #Disable Warning BC42025
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick

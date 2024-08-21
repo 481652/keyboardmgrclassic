@@ -138,7 +138,7 @@ Partial Class Form3
         '
         Me.置顶ToolStripMenuItem.CheckOnClick = True
         Me.置顶ToolStripMenuItem.Name = "置顶ToolStripMenuItem"
-        Me.置顶ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.置顶ToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.置顶ToolStripMenuItem.Text = "置顶（&T）"
         '
         '注意本功能开发中有问题请反馈ToolStripMenuItem
@@ -374,7 +374,6 @@ Partial Class Form3
         'ToolTip1
         '
         Me.ToolTip1.AutoPopDelay = 1000
-        Me.ToolTip1.BackColor = System.Drawing.Color.LightCyan
         Me.ToolTip1.InitialDelay = 500
         Me.ToolTip1.IsBalloon = True
         Me.ToolTip1.ReshowDelay = 0
