@@ -192,8 +192,10 @@ Public Class Form1
         version.Text = "版本号：" & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision
         If Settings1.Default.dostartup = True Then
             startup = True
+            CheckBox2.Checked = True
         Else
             startup = False
+            CheckBox2.Checked = False
         End If
 
 
