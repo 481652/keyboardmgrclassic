@@ -22,7 +22,7 @@ Namespace My.Resources
     '''<summary>
     '''  一个强类型的资源类，用于查找本地化的字符串等。
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"),  _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
@@ -47,8 +47,8 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  使用此强类型资源类，为所有资源查找
-        '''  重写当前线程的 CurrentUICulture 属性。
+        '''  重写当前线程的 CurrentUICulture 属性，对
+        '''  使用此强类型资源类的所有资源查找执行重写。
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Friend Property Culture() As Global.System.Globalization.CultureInfo
@@ -106,6 +106,16 @@ Namespace My.Resources
         Friend ReadOnly Property Save_24x() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Save_24x", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property StatusInformation_32x() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("StatusInformation_32x", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

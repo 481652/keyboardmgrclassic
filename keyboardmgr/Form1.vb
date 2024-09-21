@@ -170,11 +170,7 @@ Public Class Form1
         Else
             CheckBox1.Checked = False
         End If
-        '设置标题
-        Dim title As String = Settings1.Default.title
 
-        Text = title
-        TextBox3.Text = title
 
         RegisterHotKey(Handle, 0, 0, Keys.F4)
         '关闭没做完的功能
@@ -217,7 +213,7 @@ Public Class Form1
 
     '网站
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        Process.Start("https://481652.github.io/")
+        Process.Start("http://lcs.info.gf/")
     End Sub
     'github页面
     Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
@@ -407,9 +403,6 @@ Public Class Form1
     End Sub
     '保存设置
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        '标题
-        Settings1.Default.title = TextBox3.Text
-        Text = TextBox3.Text
 
         Settings1.Default.Save()
         '检查是否设置开机自启，并置开机自启
@@ -462,5 +455,18 @@ Public Class Form1
 
     Private Sub 列表连发ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列表连发ToolStripMenuItem.Click
         Form3.Show()
+    End Sub
+
+    Private Sub LinkLabel5_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel5.LinkClicked
+        Process.Start("https://lrbcodestudio.lanzoue.com/b004hnnj7a/")
+        MsgBox("密码：a58n", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "键鼠管家")
+    End Sub
+
+    Private Sub LinkLabel4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel4.LinkClicked
+        Process.Start("http://lcs.info.gf/post/wei-shen-me-wo-men-yao-ting-zhi-geng-xin-jian-shu-guan-jia-jing-dian-ban.html")
+    End Sub
+
+    Private Sub LinkLabel6_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel6.LinkClicked
+        Process.Start("https://qm.qq.com/q/SIZ1MaTKoe")
     End Sub
 End Class

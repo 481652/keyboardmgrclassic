@@ -26,6 +26,13 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage0 = New System.Windows.Forms.TabPage()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LinkLabel6 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel5 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.version = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
@@ -57,8 +64,6 @@ Partial Class Form1
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -84,6 +89,8 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -113,6 +120,7 @@ Partial Class Form1
         'TabPage0
         '
         Me.TabPage0.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
+        Me.TabPage0.Controls.Add(Me.Panel1)
         Me.TabPage0.Controls.Add(Me.version)
         Me.TabPage0.Controls.Add(Me.Label14)
         Me.TabPage0.Controls.Add(Me.LinkLabel3)
@@ -126,6 +134,81 @@ Partial Class Form1
         Me.TabPage0.Size = New System.Drawing.Size(344, 346)
         Me.TabPage0.TabIndex = 2
         Me.TabPage0.Text = "欢迎"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.LinkLabel6)
+        Me.Panel1.Controls.Add(Me.LinkLabel5)
+        Me.Panel1.Controls.Add(Me.LinkLabel4)
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.PictureBox1)
+        Me.Panel1.Location = New System.Drawing.Point(15, 81)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(312, 93)
+        Me.Panel1.TabIndex = 8
+        '
+        'LinkLabel6
+        '
+        Me.LinkLabel6.AutoSize = True
+        Me.LinkLabel6.LinkColor = System.Drawing.Color.Green
+        Me.LinkLabel6.Location = New System.Drawing.Point(158, 65)
+        Me.LinkLabel6.Name = "LinkLabel6"
+        Me.LinkLabel6.Size = New System.Drawing.Size(148, 17)
+        Me.LinkLabel6.TabIndex = 5
+        Me.LinkLabel6.TabStop = True
+        Me.LinkLabel6.Text = "加入q群获取更多新版信息"
+        '
+        'LinkLabel5
+        '
+        Me.LinkLabel5.AutoSize = True
+        Me.LinkLabel5.LinkColor = System.Drawing.Color.Green
+        Me.LinkLabel5.Location = New System.Drawing.Point(10, 65)
+        Me.LinkLabel5.Name = "LinkLabel5"
+        Me.LinkLabel5.Size = New System.Drawing.Size(56, 17)
+        Me.LinkLabel5.TabIndex = 4
+        Me.LinkLabel5.TabStop = True
+        Me.LinkLabel5.Text = "获取更新"
+        '
+        'LinkLabel4
+        '
+        Me.LinkLabel4.AutoSize = True
+        Me.LinkLabel4.LinkColor = System.Drawing.Color.Green
+        Me.LinkLabel4.Location = New System.Drawing.Point(71, 65)
+        Me.LinkLabel4.Name = "LinkLabel4"
+        Me.LinkLabel4.Size = New System.Drawing.Size(80, 17)
+        Me.LinkLabel4.TabIndex = 3
+        Me.LinkLabel4.TabStop = True
+        Me.LinkLabel4.Text = "这么做的原因"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(15, 26)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(284, 34)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "由于相关原因，我们将逐步停止本程序的更新，等到" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "新版本推出时，你可以从LCS网站获取有关信息"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(30, 6)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(176, 17)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "此版本的键鼠管家即将停止更新"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.keyboardmgr.My.Resources.Resources.StatusInformation_32x
+        Me.PictureBox1.Location = New System.Drawing.Point(4, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(20, 20)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'version
         '
@@ -196,9 +279,9 @@ Partial Class Form1
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label6.Location = New System.Drawing.Point(8, 24)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(201, 28)
+        Me.Label6.Size = New System.Drawing.Size(264, 28)
         Me.Label6.TabIndex = 1
-        Me.Label6.Text = "欢迎使用键鼠管家！"
+        Me.Label6.Text = "欢迎使用键鼠管家经典版！"
         '
         'TabPage1
         '
@@ -463,8 +546,6 @@ Partial Class Form1
         Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
         Me.TabPage3.Controls.Add(Me.CheckBox2)
         Me.TabPage3.Controls.Add(Me.Button7)
-        Me.TabPage3.Controls.Add(Me.TextBox3)
-        Me.TabPage3.Controls.Add(Me.Label16)
         Me.TabPage3.Controls.Add(Me.CheckBox1)
         Me.TabPage3.Controls.Add(Me.Label11)
         Me.TabPage3.Controls.Add(Me.ComboBox1)
@@ -503,25 +584,6 @@ Partial Class Form1
         Me.Button7.TabIndex = 10
         Me.Button7.Text = "保存设置"
         Me.Button7.UseVisualStyleBackColor = False
-        '
-        'TextBox3
-        '
-        Me.TextBox3.BackColor = System.Drawing.SystemColors.Control
-        Me.TextBox3.Location = New System.Drawing.Point(184, 64)
-        Me.TextBox3.MaxLength = 15
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(152, 23)
-        Me.TextBox3.TabIndex = 9
-        Me.TextBox3.Text = "键鼠管家"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(184, 40)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(154, 17)
-        Me.Label16.TabIndex = 8
-        Me.Label16.Text = "自定义标题（不超过15字）"
         '
         'CheckBox1
         '
@@ -709,6 +771,9 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage0.ResumeLayout(False)
         Me.TabPage0.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
@@ -769,8 +834,6 @@ Partial Class Form1
     Friend WithEvents TrayIcon As NotifyIcon
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Label16 As Label
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
@@ -785,4 +848,11 @@ Partial Class Form1
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
     Friend WithEvents Label1 As Label
     Friend WithEvents 列表连发ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents LinkLabel4 As LinkLabel
+    Friend WithEvents LinkLabel6 As LinkLabel
+    Friend WithEvents LinkLabel5 As LinkLabel
 End Class

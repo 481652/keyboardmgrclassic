@@ -248,6 +248,7 @@
     <None Include="resources\AddFile_16x.png" />
     <None Include="resources\Add_16x.png" />
     <None Include="resources\Delete_16x.png" />
+    <None Include="resources\StatusInformation_32x.png" />
     <Content Include="新图标.ico" />
     <Content Include="键盘管家.ico" />
   </ItemGroup>
