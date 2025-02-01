@@ -87,6 +87,7 @@ Partial Class Form1
         Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.LinkLabel7 = New System.Windows.Forms.LinkLabel()
         Me.TabControl1.SuspendLayout()
         Me.TabPage0.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -138,22 +139,23 @@ Partial Class Form1
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.LinkLabel7)
         Me.Panel1.Controls.Add(Me.LinkLabel6)
         Me.Panel1.Controls.Add(Me.LinkLabel5)
         Me.Panel1.Controls.Add(Me.LinkLabel4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Location = New System.Drawing.Point(15, 81)
+        Me.Panel1.Location = New System.Drawing.Point(15, 60)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(312, 93)
+        Me.Panel1.Size = New System.Drawing.Size(312, 114)
         Me.Panel1.TabIndex = 8
         '
         'LinkLabel6
         '
         Me.LinkLabel6.AutoSize = True
         Me.LinkLabel6.LinkColor = System.Drawing.Color.Green
-        Me.LinkLabel6.Location = New System.Drawing.Point(158, 65)
+        Me.LinkLabel6.Location = New System.Drawing.Point(151, 60)
         Me.LinkLabel6.Name = "LinkLabel6"
         Me.LinkLabel6.Size = New System.Drawing.Size(148, 17)
         Me.LinkLabel6.TabIndex = 5
@@ -164,7 +166,7 @@ Partial Class Form1
         '
         Me.LinkLabel5.AutoSize = True
         Me.LinkLabel5.LinkColor = System.Drawing.Color.Green
-        Me.LinkLabel5.Location = New System.Drawing.Point(10, 65)
+        Me.LinkLabel5.Location = New System.Drawing.Point(6, 60)
         Me.LinkLabel5.Name = "LinkLabel5"
         Me.LinkLabel5.Size = New System.Drawing.Size(56, 17)
         Me.LinkLabel5.TabIndex = 4
@@ -175,7 +177,7 @@ Partial Class Form1
         '
         Me.LinkLabel4.AutoSize = True
         Me.LinkLabel4.LinkColor = System.Drawing.Color.Green
-        Me.LinkLabel4.Location = New System.Drawing.Point(71, 65)
+        Me.LinkLabel4.Location = New System.Drawing.Point(65, 60)
         Me.LinkLabel4.Name = "LinkLabel4"
         Me.LinkLabel4.Size = New System.Drawing.Size(80, 17)
         Me.LinkLabel4.TabIndex = 3
@@ -189,16 +191,16 @@ Partial Class Form1
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(284, 34)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "由于相关原因，我们将逐步停止本程序的更新，等到" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "新版本推出时，你可以从LCS网站获取有关信息"
+        Me.Label3.Text = "由于相关原因，我们将逐步停止本程序的更新。要想" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "了解更多，请点击““更多信息””按钮（需要联网）"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(30, 6)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(176, 17)
+        Me.Label2.Size = New System.Drawing.Size(32, 17)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "此版本的键鼠管家即将停止更新"
+        Me.Label2.Text = "公告"
         '
         'PictureBox1
         '
@@ -213,7 +215,7 @@ Partial Class Form1
         'version
         '
         Me.version.AutoSize = True
-        Me.version.Location = New System.Drawing.Point(16, 56)
+        Me.version.Location = New System.Drawing.Point(13, 40)
         Me.version.Name = "version"
         Me.version.Size = New System.Drawing.Size(74, 17)
         Me.version.TabIndex = 7
@@ -277,7 +279,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("微软雅黑", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Label6.Location = New System.Drawing.Point(8, 24)
+        Me.Label6.Location = New System.Drawing.Point(6, 12)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(264, 28)
         Me.Label6.TabIndex = 1
@@ -753,6 +755,17 @@ Partial Class Form1
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "点我置顶"
         '
+        'LinkLabel7
+        '
+        Me.LinkLabel7.AutoSize = True
+        Me.LinkLabel7.LinkColor = System.Drawing.Color.Green
+        Me.LinkLabel7.Location = New System.Drawing.Point(6, 86)
+        Me.LinkLabel7.Name = "LinkLabel7"
+        Me.LinkLabel7.Size = New System.Drawing.Size(195, 17)
+        Me.LinkLabel7.TabIndex = 6
+        Me.LinkLabel7.TabStop = True
+        Me.LinkLabel7.Text = "更多信息（获取信息需要5秒左右）"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -855,4 +868,5 @@ Partial Class Form1
     Friend WithEvents LinkLabel4 As LinkLabel
     Friend WithEvents LinkLabel6 As LinkLabel
     Friend WithEvents LinkLabel5 As LinkLabel
+    Friend WithEvents LinkLabel7 As LinkLabel
 End Class

@@ -97,6 +97,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions2.vb" />
     <Compile Include="savedlg.Designer.vb">
       <DependentUpon>savedlg.vb</DependentUpon>
     </Compile>

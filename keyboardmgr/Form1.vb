@@ -1,5 +1,6 @@
-﻿Imports Microsoft.Win32
+﻿Imports System.Net.Http
 Imports System.Runtime.InteropServices
+Imports Microsoft.Win32
 
 
 Public Class Form1
@@ -196,6 +197,7 @@ Public Class Form1
 
 
 
+
     End Sub
     '窗体closing事件
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -223,6 +225,31 @@ Public Class Form1
     Private Sub LinkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel3.LinkClicked
         Process.Start("https://github.com/481652/keyboardmgr/issues")
     End Sub
+    '更多信息
+    Private Async Sub LinkLabel7_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel7.LinkClicked
+        Dim url As String = "https://lcs.rth1.xyz/documents/kbdmgrclassic.txt" ' 确保URL格式正确
+        Dim httpClient As New HttpClient()
+        httpClient.Timeout = TimeSpan.FromSeconds(30) ' 设置超时时间为30秒
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+        httpClient.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+        Try
+            ' 发送GET请求并获取响应内容
+            Dim response As HttpResponseMessage = Await httpClient.GetAsync(url)
+            response.EnsureSuccessStatusCode() ' 确保请求成功
+            Dim content As String = Await response.Content.ReadAsStringAsync()
+            ' 处理响应内容
+            MsgBox(content, MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "来自LCS服务器的公告")
+        Catch ex As HttpRequestException
+            MsgBox("获取公告失败：发送请求时出错，可能是无网络连接、防火墙阻止或LCS服务出现问题！", MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "错误")
+        Catch ex As TaskCanceledException
+            MsgBox("获取公告失败：请求超时，可能是网络连接差或LCS服务出现问题！" & vbCrLf & "详细信息：", MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "错误")
+        Catch ex As Exception
+            MsgBox("获取公告失败：发生未知错误。" & vbCrLf & "详细信息：" & ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "错误")
+        End Try
+    End Sub
+
+
+
     '鼠标连点
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -469,4 +496,6 @@ Public Class Form1
     Private Sub LinkLabel6_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel6.LinkClicked
         Process.Start("https://qm.qq.com/q/SIZ1MaTKoe")
     End Sub
+
+
 End Class
