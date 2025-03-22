@@ -5,7 +5,7 @@
  
  ## 下载  
 1.可以到右侧Releases里下载
-2.网盘下载：已编译最新版下载链接：https://lrbcodestudio.lanzoue.com/b004hnnj7a 密码:a58n  
+2.下载：已编译最新版下载链接：https://lcsblog.rth2.xyz/downloads/1.html
 建议前往q群146732405下载，更新更及时  
 解决方案请使用Visual Studio 2022打开
 
@@ -16,6 +16,6 @@
 小白、对ui丑不在意者及极致追求程序体积小者  
 
 ## 其他  
-程序图标和ui丑点（西北部会改进）  
+程序图标和ui丑点（新版本会改进）  
 本人代码写的有点烂，请大佬轻喷  
 
