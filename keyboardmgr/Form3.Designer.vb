@@ -34,9 +34,7 @@ Partial Class Form3
         Me.移除选定行ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.窗口ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.置顶ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.注意本功能开发中有问题请反馈ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -60,6 +58,7 @@ Partial Class Form3
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.列表连发文件关联绑定BToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -72,7 +71,7 @@ Partial Class Form3
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem, Me.操作ToolStripMenuItem, Me.窗口ToolStripMenuItem, Me.注意本功能开发中有问题请反馈ToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem, Me.操作ToolStripMenuItem, Me.窗口ToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(470, 25)
@@ -110,7 +109,7 @@ Partial Class Form3
         '
         '操作ToolStripMenuItem
         '
-        Me.操作ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.添加新行AToolStripMenuItem, Me.移除选定行ToolStripMenuItem})
+        Me.操作ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.添加新行AToolStripMenuItem, Me.移除选定行ToolStripMenuItem, Me.列表连发文件关联绑定BToolStripMenuItem})
         Me.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem"
         Me.操作ToolStripMenuItem.Size = New System.Drawing.Size(75, 21)
         Me.操作ToolStripMenuItem.Text = "操作（&E）"
@@ -118,13 +117,13 @@ Partial Class Form3
         '添加新行AToolStripMenuItem
         '
         Me.添加新行AToolStripMenuItem.Name = "添加新行AToolStripMenuItem"
-        Me.添加新行AToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.添加新行AToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.添加新行AToolStripMenuItem.Text = "添加新行(&A)"
         '
         '移除选定行ToolStripMenuItem
         '
         Me.移除选定行ToolStripMenuItem.Name = "移除选定行ToolStripMenuItem"
-        Me.移除选定行ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.移除选定行ToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
         Me.移除选定行ToolStripMenuItem.Text = "移除选定行(&R)"
         '
         '窗口ToolStripMenuItem
@@ -141,12 +140,6 @@ Partial Class Form3
         Me.置顶ToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.置顶ToolStripMenuItem.Text = "置顶（&T）"
         '
-        '注意本功能开发中有问题请反馈ToolStripMenuItem
-        '
-        Me.注意本功能开发中有问题请反馈ToolStripMenuItem.Name = "注意本功能开发中有问题请反馈ToolStripMenuItem"
-        Me.注意本功能开发中有问题请反馈ToolStripMenuItem.Size = New System.Drawing.Size(224, 21)
-        Me.注意本功能开发中有问题请反馈ToolStripMenuItem.Text = "【注意】本功能开发中，有问题请反馈"
-        '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -157,7 +150,6 @@ Partial Class Form3
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(246, Byte), Integer))
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Label4)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label3)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
@@ -176,15 +168,6 @@ Partial Class Form3
         Me.SplitContainer1.Size = New System.Drawing.Size(470, 340)
         Me.SplitContainer1.SplitterDistance = 273
         Me.SplitContainer1.TabIndex = 1
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(16, 192)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(92, 34)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "此功能开发中，" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "暂无法保存列表"
         '
         'Label3
         '
@@ -396,6 +379,12 @@ Partial Class Form3
         '
         Me.Timer.Interval = 10
         '
+        '列表连发文件关联绑定BToolStripMenuItem
+        '
+        Me.列表连发文件关联绑定BToolStripMenuItem.Name = "列表连发文件关联绑定BToolStripMenuItem"
+        Me.列表连发文件关联绑定BToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.列表连发文件关联绑定BToolStripMenuItem.Text = "列表连发文件关联绑定(&B)"
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -405,13 +394,14 @@ Partial Class Form3
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Form3"
-        Me.ShowInTaskbar = False
-        Me.Text = "列表连发编辑器"
+        Me.Text = "[列表未保存]列表连发编辑器"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.SplitContainer1.Panel1.ResumeLayout(False)
@@ -454,7 +444,6 @@ Partial Class Form3
     Friend WithEvents 添加新行AToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents Label4 As Label
     Friend WithEvents 移除选定行ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
@@ -462,6 +451,6 @@ Partial Class Form3
     Friend WithEvents Timer As Timer
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents 窗口ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents 注意本功能开发中有问题请反馈ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 置顶ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 列表连发文件关联绑定BToolStripMenuItem As ToolStripMenuItem
 End Class

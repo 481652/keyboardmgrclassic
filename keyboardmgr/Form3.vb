@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
+Imports Microsoft.Win32
 Public Class Form3
     Dim line As Integer
     Dim dosavefile As Boolean = False
@@ -55,7 +56,7 @@ Public Class Form3
             Label3.Text = "第" & line & “行"
         End If
         donewest = False
-        'Text = "*[列表已保存]列表连发编辑器"
+        Text = "*[列表已保存]列表连发编辑器"
     End Sub
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
@@ -87,42 +88,48 @@ Public Class Form3
     End Sub
     Private Sub save()
         Try
+            Dim delimiter As String = "★"
+            Dim allLines As New List(Of String)
+            For i As Integer = 0 To ListBox1.Items.Count - 1
+                allLines.Add(ListBox1.Items(i).ToString())
+            Next
+            Dim content As String = String.Join(delimiter, allLines)
+
             If dosavefile = False Then
                 If (SaveFileDialog1.ShowDialog() = DialogResult.OK) Then
                     savefile = SaveFileDialog1.FileName
-                    File.Create(savefile)
                     chdatetime = Date.Now
-                    File.SetLastWriteTime(savefile, chdatetime)
-                    Dim savestr As StreamWriter = New StreamWriter(savefile, False)
-                    Using (savestr)
-                        Dim i As Integer
-                        For i = 0 To ListBox1.Items.Count()
-                            savestr.WriteLine（ListBox1.GetItemText(i)）
-                        Next
-                        savestr.Close()
+                    Using savestr As New StreamWriter(savefile, False)
+                        savestr.Write(content)
                     End Using
-                    Text = "[列表已保存]列表连发编辑器"
+                    File.SetLastWriteTime(savefile, chdatetime)
+                    Me.Invoke(Sub()
+                                  Text = "[列表已保存]列表连发编辑器"
+                              End Sub)
                     dosavefile = True
                     savedpath = savefile
                 Else
-                    Text = "[列表未保存]列表连发编辑器"
+                    Me.Invoke(Sub()
+                                  Text = "[列表未保存]列表连发编辑器"
+                              End Sub)
                 End If
             Else '文件已经“另存为”了
                 chdatetime = Date.Now
-                File.SetLastWriteTime(savedpath, chdatetime)
-                Dim savestr As StreamWriter = New StreamWriter(savedpath, False)
-                Using (savestr)
-                    Dim i As Integer
-                    For i = 0 To ListBox1.Items.Count()
-                        savestr.WriteLine（ListBox1.GetItemText(i)）
+                Using savestr As New StreamWriter(savedpath, False)
+                    For i As Integer = 0 To ListBox1.Items.Count - 1
+                        savestr.WriteLine(ListBox1.Items(i).ToString())
                     Next
-                    savestr.Close()
                 End Using
-                Text = "[列表已保存]列表连发编辑器"
+                File.SetLastWriteTime(savedpath, chdatetime)
+                Me.Invoke(Sub()
+                              Text = "[列表已保存]列表连发编辑器"
+                          End Sub)
             End If
         Catch er As Exception
-            showexpdlg("列表连发编辑器保存错误，您的文件可能未被正确保存。", er.ToString)
-            Text = "[列表未保存]列表连发编辑器"
+            Me.Invoke(Sub()
+                          showexpdlg("列表连发编辑器保存错误，您的文件可能未被正确保存。", er.ToString)
+                          Text = "[列表未保存]列表连发编辑器"
+                      End Sub)
             dosavefile = False
             savedpath = ""
         End Try
@@ -141,13 +148,50 @@ Public Class Form3
         openthr.Priority = ThreadPriority.BelowNormal
         openthr.Start()
     End Sub
-    Private Sub open() 'todo:打开文件
+    Private Sub open()
         Try
-
+            If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+                Dim delimiter As String = "★"
+                Dim content As String = File.ReadAllText(OpenFileDialog1.FileName)
+                Dim lines() As String = content.Split(New String() {delimiter}, StringSplitOptions.None)
+                Me.Invoke(Sub()
+                              ListBox1.Items.Clear()
+                              For Each line As String In lines
+                                  ListBox1.Items.Add(line)
+                              Next
+                              savedpath = OpenFileDialog1.FileName
+                              dosavefile = True
+                              Text = "[列表已打开]列表连发编辑器"
+                          End Sub)
+            End If
         Catch er As Exception
-
+            Me.Invoke(Sub()
+                          showexpdlg("列表连发编辑器打开错误，您的文件可能未被正确读取。", er.ToString)
+                          Text = "[列表未打开]列表连发编辑器"
+                      End Sub)
+            dosavefile = False
+            savedpath = ""
         End Try
     End Sub
+
+    Public Sub OpenFileByPath(path As String) '处理文件双击的打开
+        Show()
+        Try
+            Dim delimiter As String = "★"
+            Dim content As String = IO.File.ReadAllText(path)
+            Dim lines() As String = content.Split(New String() {delimiter}, StringSplitOptions.None)
+            ListBox1.Items.Clear()
+            For Each line As String In lines
+                ListBox1.Items.Add(line)
+            Next
+            savedpath = path
+            dosavefile = True
+            Text = "[列表已打开]列表连发编辑器"
+        Catch ex As Exception
+            MessageBox.Show("打开文件失败：" & ex.Message)
+        End Try
+    End Sub
+
     '收尾工作
     Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         'todo
@@ -210,4 +254,44 @@ Public Class Form3
             TopMost = True
         End If
     End Sub
+
+    Private Sub 列表连发文件关联绑定BToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列表连发文件关联绑定BToolStripMenuItem.Click
+        Try
+            '检查是否有管理员权限
+            If Not IsAdministrator() Then
+                If MessageBox.Show("此操作需要管理员权限，是否以管理员权限重启程序？", "权限不足", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
+                    Dim psi As New ProcessStartInfo()
+                    psi.FileName = Application.ExecutablePath
+                    psi.Verb = "runas" ' 提升权限
+                    Process.Start(psi)
+                    Application.Exit() ' 退出当前实例
+                End If
+                Return
+            End If
+            Dim ext As String = ".lcslst"
+            Dim progId As String = "ListSendFile"
+            Dim appPath As String = Application.ExecutablePath
+
+            '关联扩展名和ProgID
+            Registry.SetValue("HKEY_CLASSES_ROOT\" & ext, "", progId)
+
+            '设置ProgID的描述
+            Registry.SetValue("HKEY_CLASSES_ROOT\" & progId, "", "LCS列表连发文件")
+            Registry.SetValue("HKEY_CLASSES_ROOT\" & progId & "\DefaultIcon", "", appPath & ",0")
+            Registry.SetValue("HKEY_CLASSES_ROOT\" & progId & "\shell\open\command", "", """" & appPath & """ ""%1""")
+            Label3.Text = "文件关联已绑定"
+        Catch ex As Exception
+            ToolTip1.SetToolTip(Button2, "绑定文件关联失败" & ex.Message)
+        End Try
+    End Sub
+
+    Private Function IsAdministrator() As Boolean
+        Try
+            Dim identity = System.Security.Principal.WindowsIdentity.GetCurrent()
+            Dim principal = New System.Security.Principal.WindowsPrincipal(identity)
+            Return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 End Class
