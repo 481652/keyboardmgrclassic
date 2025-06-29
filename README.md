@@ -5,7 +5,7 @@
  
  ## 下载  
 1.可以到右侧Releases里下载
-2.下载：已编译最新版下载链接：https://lcsblog.rth2.xyz/downloads/1.html
+2.下载：已编译最新版下载链接：https://lcs.rth2.xyz/downloads/1.html
 建议前往q群146732405下载，更新更及时  
 解决方案请使用Visual Studio 2022打开
 
